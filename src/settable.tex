@@ -9,8 +9,7 @@
 %%% if now \@hello is called, it prints "world"
 %%% \@hello@noerror gives the returning content and empty without error if no content set.
 %%% \ifset@hello{true}{false}
-
-% \showofftrue
+\makeatletter
 \let\ea = \expandafter
 \newcommand{\settable}[2][\@nil]{
   %%% example call \settable[\actionIfNotSet]{test}
@@ -68,3 +67,4 @@
 }
 \fi
 % \endinput
+\makeatother
