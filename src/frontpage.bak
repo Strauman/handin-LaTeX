@@ -1,0 +1,24 @@
+\makeatletter
+\def\@maketitle{%
+\thispagestyle{empty}
+\begin{center}
+	\includegraphics[scale=1]{\frontpageImage}\\[0.5cm]
+	\Large{\thetitle} \\[1.5cm]
+\end{center}
+\begin{center}
+\textbf{FYS-1002 - Elektromagnetisme}\\[1cm]
+% \textbf{}
+\textbf{DITT NAVN} \\[1cm]
+\textbf{\today} \\[3cm]
+\end{center}
+
+
+
+\begin{center}
+\vfill
+Inneholder \pageref{LastPage} sider, inkludert forside \\[0.5cm]
+\textbf{Institutt for Fysikk og Teknologi}
+\end{center}
+\clearpage
+}
+\makeatother

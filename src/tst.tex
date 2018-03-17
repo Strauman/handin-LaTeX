@@ -1,0 +1,21 @@
+\documentclass{article}
+\begin{document}
+\let\ea = \expandafter
+\makeatletter
+\ea\def\csname hey\endcsname{F}
+\def\tmp{F}
+\ea\ifx\csname hey\endcsname\tmp
+is F
+\else
+is not F
+\fi
+% \typeout{\the\catcode\expandafter`\tmpd}  %11
+% \@latex@warning{\the\catcode`H}
+% \test
+% \test{yo}
+
+% \test{hei}
+% \@test
+
+\makeatother
+\end{document}

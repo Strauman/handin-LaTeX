@@ -1,0 +1,17 @@
+PWD /Users/Andreas/Documents/uit/fag/reporter/lightPlatform/src
+INPUT /usr/local/texlive/2016basic/texmf.cnf
+INPUT /usr/local/texlive/2016basic/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2016basic/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT tst.tex
+OUTPUT bin/tst.log
+INPUT /usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size10.clo
+INPUT /usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size10.clo
+INPUT bin/tst.aux
+INPUT bin/tst.aux
+OUTPUT bin/tst.aux
+OUTPUT bin/tst.pdf
+INPUT /Users/Andreas/Library/texlive/2016basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT bin/tst.aux
+INPUT /usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb

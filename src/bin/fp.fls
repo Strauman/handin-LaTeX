@@ -1,0 +1,9 @@
+PWD /Users/Andreas/Documents/uit/fag/reporter/lightPlatform/src
+INPUT /usr/local/texlive/2016basic/texmf.cnf
+INPUT /usr/local/texlive/2016basic/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2016basic/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT fp.tex
+OUTPUT bin/fp.log
+INPUT /usr/local/texlive/2016basic/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+OUTPUT bin/fp.pdf
+INPUT /Users/Andreas/Library/texlive/2016basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map

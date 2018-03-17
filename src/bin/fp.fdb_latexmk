@@ -1,0 +1,12 @@
+# Fdb version 3
+["pdflatex"] 1521285037 "fp.tex" "bin/fp.pdf" "fp" 1521285037
+  "/Users/Andreas/Library/texlive/2016basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1504977440 82519 8f548d61c2f8627113d313b9ebd5f14a ""
+  "/usr/local/texlive/2016basic/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "/usr/local/texlive/2016basic/texmf-dist/web2c/texmf.cnf" 1463093894 31953 b9489e6e586f798610c60aec1f5ec548 ""
+  "/usr/local/texlive/2016basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1496319558 2502198 8827fa8f7e9db7a37534137c21f1df5d ""
+  "/usr/local/texlive/2016basic/texmf.cnf" 1463981856 628 02e65753891144204a0c89f7fa5761b2 ""
+  "bin/fp.aux" 1521284920 8 a94a2480d3289e625eea47cd1b285758 ""
+  "fp.tex" 1521285037 479 db574c1e90bdecbaec22fa6652c1b2da ""
+  (generated)
+  "bin/fp.log"
+  "bin/fp.pdf"

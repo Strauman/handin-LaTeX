@@ -1,0 +1,19 @@
+%!TEX root = main.tex
+\input{pakker}
+% Define settable args that gives warning
+\input{settable}
+\settable{institute}
+\settable{coursename}
+\settable{coursetitle}
+\settable[Contains \pageref{LastPage} pages, front page included]{containspages}
+\settable{logo}
+
+\setlength\parindent{0pt}
+% Smaller margins
+\geometry{paper=a4paper, bottom=3cm, top=3cm, footnotesep=3cm}
+% Header and footers
+\pagestyle{fancy}
+\fancyhf{}
+% Make top header line wider
+\addtolength\headwidth{4em}
+\fancyheadoffset{2em}

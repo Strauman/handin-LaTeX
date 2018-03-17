@@ -1,0 +1,15 @@
+# Fdb version 3
+["pdflatex"] 1521285348 "tst.tex" "bin/tst.pdf" "tst" 1521285348
+  "/Users/Andreas/Library/texlive/2016basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1504977440 82519 8f548d61c2f8627113d313b9ebd5f14a ""
+  "/usr/local/texlive/2016basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls" 1459635588 19821 310da678527a7dfe2a02c88af38079b7 ""
+  "/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size10.clo" 1459635588 8292 e897c12e1e886ce77fe26afc5d470886 ""
+  "/usr/local/texlive/2016basic/texmf-dist/web2c/texmf.cnf" 1463093894 31953 b9489e6e586f798610c60aec1f5ec548 ""
+  "/usr/local/texlive/2016basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1496319558 2502198 8827fa8f7e9db7a37534137c21f1df5d ""
+  "/usr/local/texlive/2016basic/texmf.cnf" 1463981856 628 02e65753891144204a0c89f7fa5761b2 ""
+  "bin/tst.aux" 1521285348 8 a94a2480d3289e625eea47cd1b285758 ""
+  "tst.tex" 1521285348 333 f5bf3802fdf9c43c6f0aedde2143ff05 ""
+  (generated)
+  "bin/tst.pdf"
+  "bin/tst.aux"
+  "bin/tst.log"

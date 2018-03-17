@@ -1,0 +1,33 @@
+%%% Usage:
+%%% \settable{hello}
+%%% if now \@hello is called, a warning is displayed and "\hello not set" is printed as warning
+%%% \hello{world}
+%%% if now \@hello is called, it prints "world"
+\makeatletter
+
+\let\ea = \expandafter
+\newcommand{\settable}[2][\@nil]{
+  %%% example call \settable[\defaultaction]{test}
+
+  %% below equiv to
+  %% \def\test##1{
+  %%     \def\@test{##1}
+  %% }
+  \ea\def\csname #2\ea\endcsname##1{
+    \ea\def\csname @#2\endcsname{##1}
+  }
+
+  \ea\def\csname default@#2\endcsname{#1}%
+
+  \ea\ifx\csname default@#2\endcsname\relax
+    \ea\def\csname default@#2\endcsname{\textbackslash #2}%
+  \else
+    \ea\def\csname default@#2\endcsname{#1}%
+  \fi
+
+  \ea\def\csname @#2\endcsname{
+  {\ea\@latex@warning{\ #2 not given}}
+  \csname default@#2\endcsname
+  }
+}
+\makeatother
