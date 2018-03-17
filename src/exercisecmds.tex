@@ -1,0 +1,28 @@
+
+%!TEX root = oblig1.tex
+\makeatletter
+%Macro containing exercise number
+\def\exerciseNr{0}
+\newcommand{\problem}[1]{
+% Update exercise number
+  \def\exerciseNr{#1}
+% Move margins
+  \begin{addmargin}{-1.5em}
+% Problem and problem number
+    {\normalfont\Large\bfseries \@tr{Problem} #1}
+% Move margins back
+  \end{addmargin}
+}
+\newcommand{\pproblem}[1]{
+% Make some space above
+  \vspace*{1em}
+% Move margins
+  \begin{addmargin}{-0.5em}
+% Write out problem number and letter
+    {\normalfont\Large\bfseries \exerciseNr #1)}
+% Move margins back
+  \end{addmargin}
+% Make some space below
+  \vspace*{1em}
+}
+\makeatother

@@ -1,0 +1,16 @@
+%!TEX root = ../main.tex
+\makeatletter
+\def\@tr#1{
+  \ifcsname tr@#1\endcsname%
+    \csname tr@#1\endcsname%
+  \else%
+    #1%
+  \fi%
+}
+% \set@tr{english}{foreign}
+\newcommand{\set@tr}[2]{
+  \expandafter\def\csname tr@#1\endcsname{#2}
+}
+\input{languages/enUS}
+\IfLanguageName{norsk}{\input{languages/nbNO}}{}
+\makeatother

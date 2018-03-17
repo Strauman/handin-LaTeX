@@ -1,6 +1,19 @@
 %!TEX root = main.tex
 \makeatletter
+\let\old@maketitle = \maketitle
+\def\maketitle{
+	\old@maketitle
+	\thispagestyle{empty}
+	\clearpage
+}
 \def\@maketitle{%
 	\input{fp}
+	\rhead{\@author}
+	\lhead{\@coursename - \@coursetitle}
+	\ifset@pagetext{
+		\rfoot{\@pagetext}
+	}{
+		\@tr{pagetext}
+	}
 }
 \makeatother

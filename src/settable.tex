@@ -1,33 +1,70 @@
+%!TEX root = main.tex
+% \ProvidesPackage{settable}
+%   [2018/03/17 v0.01 Package for creating settable macros with default values.]
+
 %%% Usage:
 %%% \settable{hello}
 %%% if now \@hello is called, a warning is displayed and "\hello not set" is printed as warning
 %%% \hello{world}
 %%% if now \@hello is called, it prints "world"
-\makeatletter
+%%% \@hello@noerror gives the returning content and empty without error if no content set.
+%%% \ifset@hello{true}{false}
 
+% \showofftrue
 \let\ea = \expandafter
 \newcommand{\settable}[2][\@nil]{
-  %%% example call \settable[\defaultaction]{test}
+  %%% example call \settable[\actionIfNotSet]{test}
 
   %% below equiv to
   %% \def\test##1{
   %%     \def\@test{##1}
+  %%     \def\@test@noerror{##1}
   %% }
   \ea\def\csname #2\ea\endcsname##1{
     \ea\def\csname @#2\endcsname{##1}
+    \ea\def\csname @#2@noerror\endcsname{##1}
+    \ea\def\csname isset@#2\endcsname{1}
+  }
+  \ea\def\csname ifset@#2\endcsname##1##2{
+    \ifcsname isset@#2\endcsname%
+    ##1
+    \else
+    ##2
+    \fi
   }
 
   \ea\def\csname default@#2\endcsname{#1}%
+  \ea\def\csname @#2@noerror\endcsname{#1}%
 
-  \ea\ifx\csname default@#2\endcsname\relax
-    \ea\def\csname default@#2\endcsname{\textbackslash #2}%
-  \else
-    \ea\def\csname default@#2\endcsname{#1}%
+  \ea\ifx\csname default@#2\endcsname\@nnil
+    \ea\def\csname default@#2\endcsname{
+      \textbackslash #2%
+      {\ea\@latex@warning{\ #2 not given}}
+    }
   \fi
 
   \ea\def\csname @#2\endcsname{
-  {\ea\@latex@warning{\ #2 not given}}
-  \csname default@#2\endcsname
+    \csname default@#2\endcsname
   }
 }
-\makeatother
+
+\ifshowoff
+% \renewcommand{\settable}[2][\@nil]{
+%   \ea\def\csname #2\ea\endcsname##1{Q}
+%   \ea\def\csname @#2\endcsname{\textbackslash#2}
+%   \ea\def\csname default@#2\endcsname{\textbackslash#2}
+%   \ea\def\csname @#2@noerror\endcsname{\@empty}
+%   \ea\def\csname ifset@#2\endcsname##1##2{##2}
+% }
+\@latex@warning{Settable: showing off, no settable is actually set!}
+\renewcommand{\settable}[2][\@nil]{
+  \ea\def\csname #2\endcsname##1{\relax}%
+  \ea\def\csname @#2\endcsname{}%
+  \ea\def\csname @#2@noerror\endcsname{}%
+  \ea\def\csname ifset@#2\endcsname##1##2{##2}
+  \ea\def\csname default@#2\endcsname{#1}%
+  \ea\def\csname @#2@noerror\endcsname{#1}%
+  \ea\def\csname @#2\endcsname{\textbackslash #2}
+}
+\fi
+% \endinput
