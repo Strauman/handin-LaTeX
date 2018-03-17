@@ -29,3 +29,4 @@ rm -rf ../img
 cp -r ./img ../
 cp example.tex ../
 cp handin.sty ../
+cp layout.pdf ../
