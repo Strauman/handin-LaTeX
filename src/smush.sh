@@ -22,6 +22,10 @@ perl -i.bak -pe 's/\s+\}/\}/g' $outfile
 cp $outfile tmpOut
 echo "%% Source and documentation at https://github.com/Strauman/Handin-LaTeX" > $outfile
 cat tmpOut >> $outfile
+## Create quickstart
+rm quickstart.zip
+zip quickstart.zip example.tex handin.sty
+mv quickstart.zip ../
 rm handin.sty.bak
 rm ../example.tex
 rm ../handin.sty
