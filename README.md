@@ -10,7 +10,7 @@ Look at the [example.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTe
 ## Dependencies
 `inputenc,graphicx,lastpage,scrextend,fancyhdr,geometry,amsmath,mathtools,bm,esint,iflang`
 
-##Internationalization
+## Internationalization
 Currently using `iflang` to decide betwen norwegian and english.
 
 ## Quick docs:
