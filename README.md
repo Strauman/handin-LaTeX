@@ -1,4 +1,4 @@
-# Handin-LaTeX
+# Handin/submission LaTeX template
 Light weight structure for handing in school submissions using LaTeX. Math, physics and the like.
 
 ## Quickstart
