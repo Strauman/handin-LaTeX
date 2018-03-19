@@ -14,6 +14,10 @@ Look at the [example.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTe
 Currently using `iflang` to decide betwen norwegian and english.
 
 ## Quick docs:
+### Commands
+`\problem{1}` would create a *Problem 1* headline and `\pproblem{a}` would then print *1a)* subheadline. More functionality will be made, also feel free to request functionality.
+
+### Front page (`\maketitle`)
 In the [layout.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/layout.pdf) is an overview of what commands go where. They are all used as commands to be set:
 - `\title{Assignment title}`
 - `\author{Author(s)}`
