@@ -1,5 +1,5 @@
 # Handin/submission LaTeX template
-Light weight structure for handing in school submissions using LaTeX. Math, physics and the like.
+Light weight template for handing in school submissions using LaTeX. Suitable for math, physics, statistics and the like.
 
 ## Quickstart
 Download the [quickstart.zip](https://github.com/Strauman/Handin-LaTeX/blob/master/quickstart.zip?raw=true). It contains two files: [example.tex](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/example.tex) and [handin.sty](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/handin.sty). Build example.tex and you're all good to go.
