@@ -15,12 +15,13 @@ Currently using `iflang` to decide betwen norwegian and english.
 
 ## Quick docs:
 In the [layout.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/layout.pdf) is an overview of what commands go where. They are all used as commands to be set:
-`\title{Assignment title}`
-`\author{Author(s)}`
-`\coursename{TST-101}`
-`\coursetitle{Test course}`
-`\institute{Institute of Physics and Technology}`
-`\logo{path/to/logo/or/image}`
-`\pagetext{Page \thepage~of \pageref{LastPage}}`
-`\containspages{Contains \pageref{LastPage} pages, front page included}`
-The `pagetext` and `containspages` are set to the values you see above.
+- `\title{Assignment title}`
+- `\author{Author(s)}`
+- `\coursename{TST-101}`
+- `\coursetitle{Test course}`
+- `\institute{Institute of Physics and Technology}`
+- `\logo{path/to/logo/or/image}`
+- `\pagetext{Page \thepage~of \pageref{LastPage}}`
+- `\containspages{Contains \pageref{LastPage} pages, front page included}`
+
+`pagetext` and `containspages` are set to the values you see above.
