@@ -1,6 +1,6 @@
 # Handin/submission LaTeX template
 Light weight template for handing in school submissions using LaTeX. Suitable for math, physics, statistics and the like.
-
+Here are the [manual](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/docs/manual.pdf)
 ## Quickstart
 Download the [quickstart.zip](https://github.com/Strauman/Handin-LaTeX/blob/master/quickstart.zip?raw=true). It contains two files: [example.tex](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/example.tex) and [handin.sty](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/handin.sty). Build example.tex and you're all good to go.
 
