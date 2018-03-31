@@ -4,13 +4,51 @@
 \newif\ifshowoff
 \showofffalse
 \input{settable}
-\settable{institute}
-\settable{coursename}
-\settable{coursetitle}
-\settable{containspages}
-\settable{logo}
+%\BDOC
+%§fp
+% This package redefines \maketitle.
+% Here are some front-page commands. See layout.pdf for where they will appear.
+% These commands all have to be executed in the preamble (that is after \documentclass and before \begin{document})\\
+% The \title and \author commands are as per usual:
+%\EDOC
+%\BDOC
+%\title{title}
+%\EDOC
 \settable{title}
+%\BDOC
+%\author{your name}
+%\EDOC
 \settable{author}
+%\BDOC
+%\logo{path/to/image}
+% If you want an image below the title, you provide the path to the image here
+%\EDOC
+\settable{logo}
+%\BDOC
+%\coursename{text}
+\settable{coursename}
+%\EDOC
+%\BDOC
+%\coursetitle{text}
+% The front page will show coursename - coursetitle on a "subtitle" format
+%\EDOC
+\settable{coursetitle}
+% \BDOC
+% \institute{text}
+% Shows as text on bottom
+% \EDOC
+\settable{institute}
+% \BDOC
+% \containspages{text}
+%   Here you can set a string that shows on bottom. Default is\\
+%   \containspages{Contains \pageref\brackets{LastPage} pages, front page included}
+% \EDOC
+\settable{containspages}
+% \BDOC
+% \pagetext{string}
+% This is the text that is on the bottom right corner reading "Page x of y". Default is
+% \pagetext{Page \thepage~of \pageref{LastPage}}
+% \EDOC
 \settable{pagetext}
 
 \setlength\parindent{0pt}

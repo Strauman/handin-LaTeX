@@ -1,8 +1,18 @@
 
 %!TEX root = oblig1.tex
+%\BDOC
+%§ex
+% Here are commands related to creating exercises
+%\EDOC
 \makeatletter
 %Macro containing exercise number
 \def\exerciseNr{0}
+% \BDOC
+% \problem{text}
+% This command will print out a problem header. For example \problem{1}
+% prints a nice big header \!textbf{Problem 1}
+% \EDOC
+
 \newcommand{\problem}[1]{
 % Update exercise number
   \def\exerciseNr{#1}
@@ -13,6 +23,12 @@
 % Move margins back
   \end{addmargin}
 }
+% \BDOC
+% \pproblem{text}
+% This command will print out a part problem header based on what problem you are on.
+% For example if you already have done \problem{1}, then \pproblem{a}
+% prints a nice big header \!textbf{(1a)}
+% \EDOC
 \newcommand{\pproblem}[1]{
 % Make some space above
   \vspace*{1em}

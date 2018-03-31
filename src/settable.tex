@@ -9,6 +9,22 @@
 %%% if now \@hello is called, it prints "world"
 %%% \@hello@noerror gives the returning content and empty without error if no content set.
 %%% \ifset@hello{true}{false}
+% \BDOC
+% §ref
+% \settable{text}
+% The text you enter would be a macro. See example:
+% \EDOC
+%\BEX
+% \settable{hello}
+% %if now \@hello is called,
+% % a warning is displayed with
+% % the text "\hello not set"
+% \hello{world}
+% % if now \@hello is called, it prints "world"
+% \@hello@noerror gives the returning
+% content and empty without error if no content set.
+% \ifset@hello{true}{false}
+%\EEX
 \makeatletter
 \let\ea = \expandafter
 \newcommand{\settable}[2][\@nil]{
