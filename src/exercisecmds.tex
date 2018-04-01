@@ -1,5 +1,5 @@
 
-%!TEX root = oblig1.tex
+%!TEX root = main.tex
 %\BDOC
 %§ex
 % Here are commands related to creating exercises
@@ -10,10 +10,19 @@
 % \BDOC
 % \problem{text}
 % This command will print out a problem header. For example \problem{1}
-% prints a nice big header \!textbf{Problem 1}
+% prints a nice big header \!textbf{Problem 1} You can do a star (*) after \problem to
+% prevent it from showing in the table of contents
 % \EDOC
-
-\newcommand{\problem}[1]{
+% \BDOC
+% \problem*{text}
+% Does the same as \problem, but does not add the problem to the table of contents
+% \EDOC
+\gdef\problem{\@ifnextchar*{\expandafter\@problem\@secondoftwo}{\@problemTOC}}
+\gdef\@problemTOC#1{
+  \addcontentsline{toc}{section}{\@tr{Problem} #1}
+  \@problem{#1}
+}
+\newcommand{\@problem}[1]{
 % Update exercise number
   \def\exerciseNr{#1}
 % Move margins
@@ -27,18 +36,22 @@
 % \pproblem{text}
 % This command will print out a part problem header based on what problem you are on.
 % For example if you already have done \problem{1}, then \pproblem{a}
-% prints a nice big header \!textbf{(1a)}
+% prints a nice big header \!textbf{(1a)}. You can do a star (*) after \pproblem to
+% prevent it from showing in the table of contents
 % \EDOC
-\newcommand{\pproblem}[1]{
+% \BDOC
+% \pproblem*{text}
+% Does the same as \pproblem, but does not add the part problem to the table of contents
+% \EDOC
+\gdef\pproblem{\@ifnextchar*{\expandafter\@pproblem\@secondoftwo}{\@pproblemTOC}}
+\gdef\@pproblemTOC#1{
+  \addcontentsline{toc}{subsection}{\exerciseNr #1}
+  \@pproblem{#1}
+}
+\newcommand{\@pproblem}[1]{
 % Make some space above
   \vspace*{1em}
-% Move margins
-  \begin{addmargin}{-0.5em}
 % Write out problem number and letter
-    {\normalfont\Large\bfseries \exerciseNr #1)}
-% Move margins back
-  \end{addmargin}
-% Make some space below
-  \vspace*{1em}
+  \hspace*{-0.5em}{\normalfont\Large\bfseries \exerciseNr #1)}
 }
 \makeatother

@@ -1,19 +1,24 @@
-\ProvidesPackage{handin}[2018/03/17 v0.01 Creates a setup that is ideal for handing in hard-science school papers that are divided in exercises.]
+\ProvidesPackage{handin}[2018/04/01 v0.0.2b22 Creates a setup that is ideal for handing in hard-science school papers that are divided in exercises.]
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{lastpage}
 \usepackage{scrextend}
 \def\exerciseNr{0}
-\newcommand{\problem}[1]{  \def\exerciseNr{#1}
+\gdef\problem{\@ifnextchar*{\expandafter\@problem\@secondoftwo}{\@problemTOC}}
+\gdef\@problemTOC#1{  \addcontentsline{toc}{section}{\@tr{Problem} #1}
+  \@problem{#1}
+}
+\newcommand{\@problem}[1]{  \def\exerciseNr{#1}
   \begin{addmargin}{-1.5em}
     {\normalfont\Large\bfseries \@tr{Problem} #1}
   \end{addmargin}
 }
-\newcommand{\pproblem}[1]{  \vspace*{1em}
-  \begin{addmargin}{-0.5em}
-    {\normalfont\Large\bfseries\exerciseNr #1)}
-  \end{addmargin}
-  \vspace*{1em}
+\gdef\pproblem{\@ifnextchar*{\expandafter\@pproblem\@secondoftwo}{\@pproblemTOC}}
+\gdef\@pproblemTOC#1{  \addcontentsline{toc}{subsection}{\exerciseNr #1}
+  \@pproblem{#1}
+}
+\newcommand{\@pproblem}[1]{  \vspace*{1em}
+  \hspace*{-0.5em}{\normalfont\Large\bfseries\exerciseNr #1)}
 }
  \usepackage{fancyhdr}
 \usepackage{geometry}
@@ -30,6 +35,8 @@
 }
 \newcommand{\set@tr}[2]{  \expandafter\def\csname tr@#1\endcsname{#2}
 }
+\set@tr{Problem}{Problem}
+\set@tr{problem}{problem}
 \set@tr{containspages}{Contains \pageref{LastPage} pages, front page included}
 \set@tr{pagetext}{Page \thepage~of \pageref{LastPage}}
  \IfLanguageName{norsk}{%
