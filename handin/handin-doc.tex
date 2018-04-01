@@ -1,6 +1,19 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This is a generated file %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% handin v0.0.2b31 - 2018/04/01
+%% The LaTeX package handin - version v0.0.2 (2018/04/01) build 31
+%% handin.sty
+%% -------------------------------------------------------------------------------------------
+%% Copyright (c) 2018 by Andreas Storvik Strauman
+%% -------------------------------------------------------------------------------------------
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008/05/04 or later.
+%% This work has the LPPL maintenance status `author-maintained'.
+%% This work consists of all files listed in README.txt
+
 \documentclass{article}
 \usepackage[all]{tcolorbox}
 \makeatletter
@@ -27,13 +40,12 @@
       \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
       },
     drop fuzzy shadow,#1}
- \def\version#1{\xdef\@version{#1}}
-\title{Handin - manual\\{\normalsize v0.0.2b22}}
- \makeatother
+  \makeatother
 \let\dac\docAuxCommand
 \tcbset{documentation listing style=mydocumentation}
 
 \setlength{\parindent}{0pt}
+\title{{Handin - manual\\ v0.0.2{\\[-0.5em]\footnotesize(build 31)}}}
 \author{Andreas Strauman}
 \begin{document}
 \maketitle
@@ -147,6 +159,5 @@ This package supports norwegian and english. Translations are welcome at \dac{ur
 \begin{tabular}{lll}
   Version&Date&Changes\\
   v0.0.2&2018/04/01&Problems are now added to the table of contents by default
-
 \end{tabular}
  \end{document}

@@ -4,9 +4,10 @@ Light weight template for creating school submissions using LaTeX. Especially su
 Files:
 - handin.sty : The handin package
 - handin-doc.pdf : Description of how the package works
+- handin-doc.tex : Source of handin-doc.tex
 - layout.pdf : Contains an overview on which macro goes where in the new \maketitle
-- example.tex : Contains example code
 - example.pdf : Output of example.tex
+- example.tex : Contains example code
 - universityTromsoLogo.pdf : An image to be used in the example
 
 Author: Storvik Strauman, Andreas
@@ -16,7 +17,7 @@ For bug report, inquires, contributed or anything else:
 
 Licence:
 
-The LaTeX package #PACKAGE - version #VERSIONB (#DATE)
+The LaTeX package #PACKAGE - version #VERSION (#DATE) build #BUILD
 #PACKAGE.sty
 -------------------------------------------------------------------------------------------
 Copyright (c) 2018 by Andreas Storvik Strauman
