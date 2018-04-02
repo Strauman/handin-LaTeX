@@ -39,3 +39,4 @@ mv handinCTAN.zip ../
 rm -rf ../handin
 mv handin ../
 # unzip example.zip -d example
+echo "Tag as v${version}b$build"
