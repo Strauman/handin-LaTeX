@@ -1,6 +1,12 @@
 # Handin/submission LaTeX template
 Light weight template for handing in school submissions using LaTeX. Suitable for math, physics, statistics and the like.
 Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/docs/handin-doc.pdf)
+## Super quick start
+### Only if you have texlive 2018
+1. Install the package from [CTAN](https://ctan.org/pkg/handin). With `texlive`: `tlmgr install handin`
+and use the [docs](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf) from there.
+
+It is probably not the latest version though.
 ## Quickstart
 `\usepackage{handin}`. However I reccomend checking out the example.tex in the quickstart:
 
