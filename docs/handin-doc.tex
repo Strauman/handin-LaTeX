@@ -1,5 +1,5 @@
-%% handin v0.0.2b34 - 2018/04/02
-%% The LaTeX package handin - version v0.0.2 (2018/04/02) build 34
+%% handin v0.0.2b40 - 2018/04/02
+%% The LaTeX package handin - version v0.0.2 (2018/04/02) build 40
 %% handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -16,6 +16,7 @@
 
 \documentclass{article}
 \usepackage[all]{tcolorbox}
+\usepackage{needspace}
 \makeatletter
 \lstdefinestyle{mydocumentation}{style=tcbdocumentation,
   classoffset=0,
@@ -43,9 +44,15 @@
   \makeatother
 \let\dac\docAuxCommand
 \tcbset{documentation listing style=mydocumentation}
+% Give section some space
+\let\oldsection\section
+\gdef\section{\needspace{0.3\paperheight}\oldsection}
+\let\oldsubsection\subsection
+\gdef\subsection{\needspace{0.2\paperheight}\oldsubsection}
+
 
 \setlength{\parindent}{0pt}
-\title{{Handin - manual\\ v0.0.2{\\[-0.5em]\footnotesize(build 34)}}}
+\title{{Handin - manual\\ v0.0.2{\\[-0.5em]\footnotesize(build 40)}}}
 \author{Andreas Strauman}
 \begin{document}
 \maketitle
@@ -60,99 +67,69 @@ If you found any bugs or want new functionality, to contribute, view the comment
 \tableofcontents
 \clearpage
  \section{Reference}
-\subsection{Making exercises}
- Here are commands related to creating exercises
-
-
-\begin{docCommand}[]{problem}{\marg{text}}
+\subsection{Page formatting commands}
+This package redefines \dac{maketitle}.
+Here are some front-page commands. See layout.pdf for where they will appear.
+These commands all have to be executed in the preamble (that is after \dac{documentclass} and before \dac{begin}\{document\})\\
+The \dac{title} and \dac{author} commands are as per usual:
+\begin{docCommand}{title}{\marg{title}}
+\end{docCommand}
+\begin{docCommand}{author}{\marg{your name}}
+\end{docCommand}
+\begin{docCommand}{logo}{\marg{path/to/image}}
+ If you want an image below the title, you provide the path to the image here
+\end{docCommand}
+\begin{docCommand}{coursename}{\marg{text}}
+\end{docCommand}
+\begin{docCommand}{coursetitle}{\marg{text}}
+The front page will show coursename - coursetitle on a "subtitle" format
+\end{docCommand}
+\begin{docCommand}{institute}{\marg{text}}
+ Shows as text on bottom
+\end{docCommand}
+\begin{docCommand}{containspages}{\marg{text}}
+ Here you can set a string that shows on bottom. Default is\\
+ \dac{containspages}\{Contains \dac{pageref}\brackets{LastPage\} pages, front page included}
+\end{docCommand}
+\begin{docCommand}{pagetext}{\marg{string}}
+ This is the text that is on the bottom right corner reading "Page x of y". Default is
+ \dac{pagetext}\{Page \dac{thepage}~of \dac{pageref}{LastPage\}}
+\end{docCommand}
+\subsection{General reference}
+\begin{docCommand}{problem}{\marg{text}}
  This command will print out a problem header. For example \dac{problem}\{1\}
  prints a nice big header \textbf{Problem 1} You can do a star (*) after \dac{problem} to
  prevent it from showing in the table of contents
-
 \end{docCommand}
-
-\begin{docCommand}[]{problem*}{\marg{text}}
+\begin{docCommand}{problem}{}
  Does the same as \dac{problem}, but does not add the problem to the table of contents
-
 \end{docCommand}
-
-\begin{docCommand}[]{pproblem}{\marg{text}}
+\begin{docCommand}{pproblem}{\marg{text}}
  This command will print out a part problem header based on what problem you are on.
  For example if you already have done \dac{problem}\{1\}, then \dac{pproblem}\{a\}
  prints a nice big header \textbf{(1a)}. You can do a star (*) after \dac{pproblem} to
  prevent it from showing in the table of contents
-
 \end{docCommand}
-
-\begin{docCommand}[]{pproblem*}{\marg{text}}
+\begin{docCommand}{pproblem}{}
  Does the same as \dac{pproblem}, but does not add the part problem to the table of contents
-
 \end{docCommand}
-
-\subsection{Page formatting commands}
-\begin{docCommand}[]{title}{\marg{title}}
-
-\end{docCommand}
-
-\begin{docCommand}[]{author}{\marg{your name}}
-
-\end{docCommand}
-
-\begin{docCommand}[]{logo}{\marg{path/to/image}}
- If you want an image below the title, you provide the path to the image here
-
-\end{docCommand}
-
-\begin{docCommand}[]{coursename}{\marg{text}}
-
-\end{docCommand}
-
-\begin{docCommand}[]{coursetitle}{\marg{text}}
- The front page will show coursename - coursetitle on a "subtitle" format
-
-\end{docCommand}
-
-\begin{docCommand}[]{institute}{\marg{text}}
- Shows as text on bottom
-
-\end{docCommand}
-
-\begin{docCommand}[]{containspages}{\marg{text}}
-   Here you can set a string that shows on bottom. Default is\\
-   \dac{containspages}\{Contains \dac{pageref}\brackets{LastPage\} pages, front page included}
-
-\end{docCommand}
-
-\begin{docCommand}[]{pagetext}{\marg{string}}
- This is the text that is on the bottom right corner reading "Page x of y". Default is
- \dac{pagetext}\{Page \dac{thepage}~of \dac{pageref}{LastPage\}}
-
-\end{docCommand}
-
-\subsection{Languages}
-This package supports norwegian and english. Translations are welcome at \dac{url}\{https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/languages\}. that are set by the \!\dac{texttt}\{iflang\} package.
-
-
-
-\subsection{General reference}
-\begin{docCommand}[]{settable}{\marg{text}}
- The text you enter would be a macro. See example:
-
-\end{docCommand}
-
+\begin{docCommand}{settable}{\marg{text}}
 \begin{dispListing}
  \settable{hello}
- %if now \@hello is called,
- % a warning is displayed with
- % the text "\hello not set"
- \hello{world}
- % if now \@hello is called, it prints "world"
- \@hello@noerror gives the returning
- content and empty without error if no content set.
- \ifset@hello{true}{false}
-
 \end{dispListing}
-
+ if now \dac{@hello} is called,
+  a warning is displayed with
+  the text "\dac{hello} not set"
+\begin{dispListing}
+ \hello{world}
+\end{dispListing}
+ if now \dac{@hello} is called, it prints "world"
+ \dac{@hello@noerror} gives the returning
+ content and empty without error if no content set.
+\begin{dispListing}
+ \ifset@hello{true}{false}
+\end{dispListing}
+\end{docCommand}
 
 \section{Changelog}
 % Use , 2018/04/01
