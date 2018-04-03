@@ -14,7 +14,8 @@ It's already a part of MikTeX, so just do `\usepackage{handin}`
 ### And then
 use the [docs](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf).
 
-It is probably not the latest version though.
+Since this package is in early stages, the CTAN-version is probably not the latest version though. There will be multiple builds pushed here first. Current CTAN-version is `0.0.2 build 30`.
+
 ## Quickstart
 `\usepackage{handin}`. However I reccomend checking out the example.tex in the quickstart:
 
