@@ -1,7 +1,7 @@
 %!TEX root = ../main.tex
 %\BDOC
 %§lang
-%This package supports norwegian and english. Translations are welcome at \url{https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/languages}. that are set by the \!\texttt{iflang} package.
+%This package supports norwegian, german and english. Translations are welcome at \url{https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/languages}. that are set by the \!\texttt{iflang} package.
 %
 %:-
 \makeatletter
@@ -18,4 +18,5 @@
 }
 \input{languages/enUS}
 \IfLanguageName{norsk}{\input{languages/nbNO}}{}
+\IfLanguageName{german}{\input{languages/deDE}}{}
 \makeatother
