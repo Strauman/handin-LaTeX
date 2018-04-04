@@ -74,3 +74,5 @@ Install with TeXLive or MikTeX, as per usual. Alternatively download the latest 
 
 ## Internationalisation (Supported langugages)
 Currently using `iflang` to decide between German, Norwegian and English.
+
+# Contribution guidelines are [here](https://github.com/Strauman/Handin-LaTeX-template/blob/master/.github/CONTRIBUTING.md)
