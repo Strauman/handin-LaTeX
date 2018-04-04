@@ -31,7 +31,7 @@ The current latest version available on GitHub is v0.0.3 (2018/04/04) build 41
 
 The current latest version available on CTAN is v0.0.3 (2018/04/04) build 41
 
-*Be aware that it can take at least 24-48 hours from the CTAN date above until the package is updated on CTAN, TeXLive and MiKTeX are updated*
+*Note that it can take at least 24-48 hours from the CTAN date above until the package is updated on CTAN, TeXLive and MiKTeX.*
 
 A build has no major changes in the core code (could be changes in documentation, or cosmetic changes in the code). Every time a minor version (that is the middle version number) changes, an upload is made to CTAN. If the patch version change (the last version number) is significant, it will also be uploaded to CTAN. The build number (ideally) never resets.
 
