@@ -33,10 +33,13 @@ cd ../
 outHandle "Error when inserting package-variables to README.md-file" $perlDir/vars.pl -v $version -p $packagename -g $github -b $build README.md
 
 # Zip CTAN file
-zip handinCTAN.zip -r $CTANDir/
-rm $mainDir/haninCTAN.zip
-rm -rf $mainDir/handin
-mv $sourceDir/handinCTAN.zip $mainDir/
-mv $CTANDir/ $mainDir/$packagename
+sleep 0.3
+echo "Zipping CTAN"
+rm haninCTAN.zip
+zip handinCTAN.zip -r "$packagename/"
+
+rm -rf "$mainDir/handin"
+mv "$sourceDir/handinCTAN.zip" "$mainDir/"
+mv "$CTANDir/" "$mainDir/$packagename"
 
 echo "Tag as v${version}b$build"
