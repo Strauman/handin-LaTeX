@@ -3,7 +3,10 @@ Light weight template for handing in school submissions using LaTeX. Suitable fo
 Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/docs/handin-doc.pdf)
 
 ## Table of contents
-* [Package documentation (pdf)](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf)
+* [Resources](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf)
+  * [Latest version (@@VERSIONB) (.zip)](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
+  * [Package documentation (.pdf)](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf)
+  * [How to document this package (.tex)](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
 * [Versions](#versions)  
 * [Super quick start](#super-quick-start)
     * [Using TeXLive](#texlive-macos-and-linux-only-if-you-have-texlive-2018)
@@ -16,7 +19,7 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
 * [Contributing](#contributing)
     * [Installation](#getting-the-repo)
     * [File structure](#file-structure)
-    * [How to document (tex)](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
+    * [How to document (.tex)](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
     * [Translations](#translations--languages)
 
 ## Versions
