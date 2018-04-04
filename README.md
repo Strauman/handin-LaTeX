@@ -6,7 +6,7 @@
 Light weight template for handing in school submissions using LaTeX. Suitable for math, physics, statistics and the like.
 Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/docs/handin-doc.pdf)
 ## Versions
-The current latest version available on GitHub is v0.0.2 (2018/04/04) build 40
+The current latest version available on GitHub is v0.0.3 (2018/04/04) build 41
 
 The current latest version available on CTAN is 0.0.2 (2018-04-01) build 2
 
