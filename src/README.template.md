@@ -3,7 +3,7 @@ Light weight template for handing in school submissions using LaTeX. Suitable fo
 Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX/master/docs/handin-doc.pdf)
 
 ## Table of contents
-*  Resources:
+* Resources:
   * [Latest version (@@VERSIONB) (.zip)](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
   * [Package documentation (.pdf)](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf)
   * Layout of front page: [layout.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/layout.pdf?raw=true)
