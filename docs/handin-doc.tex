@@ -1,6 +1,6 @@
-%% handin v0.0.2b40 - 2018/04/02
-%% The LaTeX package handin - version v0.0.2 (2018/04/02) build 40
-%% handin.sty
+%% handin v0.0.2b40 - 2018/04/04
+%% The LaTeX package handin - version v0.0.2 (2018/04/04) build 40
+%% #PACKAGE.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
 %% -------------------------------------------------------------------------------------------
@@ -13,10 +13,10 @@
 %% version 2008/05/04 or later.
 %% This work has the LPPL maintenance status `author-maintained'.
 %% This work consists of all files listed in README.txt
-
 \documentclass{article}
 \usepackage[all]{tcolorbox}
 \usepackage{needspace}
+\usepackage{tabularx}
 \makeatletter
 \lstdefinestyle{mydocumentation}{style=tcbdocumentation,
   classoffset=0,
@@ -133,9 +133,12 @@ The front page will show coursename - coursetitle on a "subtitle" format
 
 \section{Changelog}
 % Use , 2018/04/01
-\begin{tabular}{lll}
+\begin{tabularx}{\textwidth}{llX}
   Version&Date&Changes\\
   v0.0.2&2018/04/01&Problems are now added to the table of contents by default\\
-  v0.0.2b34&2018/04/02&Updated documentation syntax
-\end{tabular}
+  v0.0.2b34&2018/04/02&Updated documentation syntax\\
+  v0.0.2b40&2018/04/04&\begin{itemize}
+    \item German language added
+  \end{itemize}\\
+\end{tabularx}
  \end{document}

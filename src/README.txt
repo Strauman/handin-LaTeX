@@ -13,12 +13,12 @@ Files:
 Author: Storvik Strauman, Andreas
 
 For bug report, inquires, contributed or anything else:
-#GITHUB
+@@GITHUB
 
 Licence:
 
-The LaTeX package #PACKAGE - version @@VERSION (@@DATE) build @@BUILD
-#PACKAGE.sty
+The LaTeX package @@PACKAGE - version @@VERSION (@@DATE) build @@BUILD
+@@PACKAGE.sty
 -------------------------------------------------------------------------------------------
 Copyright (c) 2018 by Andreas Storvik Strauman
 -------------------------------------------------------------------------------------------
