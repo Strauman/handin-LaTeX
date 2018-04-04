@@ -17,7 +17,7 @@ For bug report, inquires, contributed or anything else:
 
 Licence:
 
-The LaTeX package #PACKAGE - version #VERSION (#DATE) build #BUILD
+The LaTeX package #PACKAGE - version @@VERSION (@@DATE) build @@BUILD
 #PACKAGE.sty
 -------------------------------------------------------------------------------------------
 Copyright (c) 2018 by Andreas Storvik Strauman

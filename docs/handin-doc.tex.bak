@@ -28,7 +28,7 @@
       },
     drop fuzzy shadow,#1}
  \def\version#1{\xdef\@version{#1}}
-\title{Handin - manual\\{\normalsize #VERSION}}
+\title{Handin - manual\\{\normalsize @@VERSION}}
  \makeatother
 \let\dac\docAuxCommand
 \tcbset{documentation listing style=mydocumentation}
