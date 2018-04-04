@@ -58,3 +58,26 @@ Currently using `iflang` to decide betwen norwegian and english.
 - `\containspages{Contains \pageref{LastPage} pages, front page included}`
 
 `pagetext` and `containspages` are set to the values you see above.
+# Contributing
+## Translations / Languages
+As of now there are not much to translate. However it might expand as the package grows. Here are instructions on how to translate:
+
+In the `src/languages/` folder and check out the other translations.
+Copy and paste the `enUS.tex` file and translate.
+
+If you feel up for integrating it, this is what you do:
+1. In the top you should change the comment line in the top of your new language file
+```
+%:$LANGUAGES.=\!item English
+```
+to
+```
+%:$LANGUAGES.=\!item theNewLanguage (by \!href{https://github.com/yourGitHubUsername}{yourGitHubUsername})
+```
+2. Open the `src/languages/languagedelegator.tex` and add this line at the bottom
+```
+\IfLanguageName{ifLangName}{\input{languages/yourLang}}{}
+```
+where the `ifLangName` is the name of your language. This is what you have to enter in `babel` to get your language. Most likely it's the language name in the **native** language.
+
+3. Add it in the comments with the other languages in `src/example.tex`.
