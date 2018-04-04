@@ -43,5 +43,5 @@ sleep 0.3
 rm -rf "$mainDir/handin"
 mv "$sourceDir/handinCTAN.zip" "$mainDir/"
 mv "$CTANDir/" "$mainDir/$packagename"
-
+cp "$mainDir/handinCTAN.zip" "$mainDir/handin.zip"
 echo "Tag as v${version}b$build"
