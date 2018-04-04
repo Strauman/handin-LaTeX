@@ -97,7 +97,7 @@ All of the code are distributed within the `src`-folder. Here is an overview. Fi
 - (`layout.tex`) is just used for creating the front page layout preview file on CTAN.
 - [`main.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/main.tex) this is the main file you should be working in when you are working on the package
 - (`packagehead.tex`): All the files are compiled into one `.sty`-file before sent to [CTAN](http://ctan.org). This file contains the top of that `.sty`-file.
-- [`preamble.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/preamble.tex) contains the preamble logic. Mostly including other files.
+- [`preamble.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/preamble.tex) contains the preamble logic. This is where the user commands `\coursename`, `\institute` etc. are set. Except from that it's including other files and setting margins etc.
 - (`README.template.md`) is the template for what is used for the GitHub README file. It contains "variables"  with version and build info which are replaced by an automatic script.
 - (`README.txt`) README file for CTAN.
 - [`settable.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/settable.tex) contains a macro for generating user-settables. See top of file for usage.
