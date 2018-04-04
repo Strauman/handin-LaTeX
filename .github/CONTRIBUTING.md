@@ -1,4 +1,9 @@
 # Contributing
+* [Installation](#getting-the-repo)
+* [File structure](#file-structure)
+* [How to document (.tex)](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
+* [Translations](#translations--languages)
+
 
 ## Getting the repo
 Run `https://github.com/Strauman/Handin-LaTeX-template.git /path/to/where/you/want the files`
