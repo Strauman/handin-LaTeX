@@ -7,7 +7,7 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
 * [Versions](#headers)  
 * [Super quick start](#superquick)
     * [Using TeXLive](#texlive)
-    * [Using windows (MiKTeX)][#miktex]
+    * [Using windows (MiKTeX)](#miktex)
 * [Quick start](#quickstart)
     * [Quick manual](#quickdocs)
         * [Provided commands](#commands)
@@ -18,8 +18,9 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
     * [File structure](#files)
     * How to document[documentation-doc.tex](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
     * [Translations](#translation)
-<a name='versions'/>
+
 ## Versions
+<a name='versions'/>
 The current latest version available on GitHub is @@VERSION (@@DATE) build @@BUILD
 
 The current latest version available on CTAN is v0.0.3 (2018/04/04) build 41
@@ -28,33 +29,39 @@ The current latest version available on CTAN is v0.0.3 (2018/04/04) build 41
 
 A build has no major changes in the core code (could be changes in documentation, or cosmetic changes in the code). Every time a minor version (that is the middle version number) changes, an upload is made to CTAN. If the patch version change (the last version number) is significant, it will also be uploaded to CTAN. The build number (ideally) never resets.
 
-<a name='superquick'/>
 ## Super quick start
-<a name='texlive'/>
+<a name='superquick'/>
+
 ### Texlive (MacOS and Linux): Only if you have texlive 2018
+<a name='texlive'/>
 1. Install the package from [CTAN](https://ctan.org/pkg/handin). With `texlive`: `tlmgr install handin`
 if you dont have texlive 2018, you can pretest it [here](https://www.tug.org/texlive/pretest.html): https://www.tug.org/texlive/pretest.html
 2. Add `\usepackage{handin}` to your preamble (that is any place before `\begin{document}`
-<a name='miktex'/>
+
 ### MikTeX (Windows):
+<a name='miktex'/>
 It's already a part of MikTeX, so just do `\usepackage{handin}`
 
 ### And then
 use the [docs](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf).
 
 Since this package is in early stages, the CTAN-version is probably not the latest version though. There will be multiple builds pushed here first. Current CTAN-version is `0.0.2 build 30`.
-<a name='quickstart'>
+
 ## Quickstart
+<a name='quickstart'>
 Install with TeXLive or MikTeX or download the latest version herer: [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip), and in your document use:
 `\usepackage{handin}`. There is an example included in the [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
 
-<a name='quickdocs'>
+
 ## Quick docs:
-<a name='commands'>
+<a name='quickdocs'>
+
 ### Commands
+<a name='commands'>
 `\problem{1}` would create a *Problem 1* headline and `\pproblem{a}` would then print *1a)* subheadline (with some margin magic and other snacks). More functionality will be made, also feel free to request functionality.
-<a name='frontpage'>
+
 ### Front page (`\maketitle`)
+<a name='frontpage'>
 [layout.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/layout.pdf?raw=true) is an overview of what commands writes out what where. They are all used as commands to be set:
 - `\title{Assignment title}`
 - `\author{Author(s)}`
@@ -66,17 +73,21 @@ Install with TeXLive or MikTeX or download the latest version herer: [handin.zip
 - `\containspages{Contains \pageref{LastPage} pages, front page included}`
 
 `pagetext` and `containspages` are set to the values you see above.
-<a name='internationalization'>
+
 ## Internationalization
+<a name='internationalization'>
 Currently using `iflang` to decide between German, Norwegian and English.
-<a name='contributing'>
+
 # Contributing
-<a name='installing'>
+<a name='contributing'>
+
 ## Getting the repo
+<a name='installing'>
 Run `https://github.com/Strauman/Handin-LaTeX-template.git /path/to/where/you/want the files`
 Then build the `src/main.tex` file with your favorite latex interpreter.
-<a name='files'>
+
 ## File structure
+<a name='files'>
 If you have ideas and the like, you should first add them to the issue tracker before you start writing the code. This is that you can be sure we want the code in the package before you write it.
 
 Check out [`documentation-doc.tex`](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex) for instructions on how to document the code. All the documentation is automatically generated from the comments in the code using a custom `perl`-script. This file shows examples on how to document the code so that it shows up in the documentation properly.
@@ -97,8 +108,9 @@ All of the code are distributed within the `src`-folder. Here is an overview. Fi
 - (`texpack.tex`) is built when generating the `.sty` file
 - (`texpackvars.ini`) contains information about the version and the like for automatic package generation
 - [`titlemaker.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/titlemaker.tex) redefines `\maketitle` and sets headers and footers
-<a name='translation'>
+
 ## Translations / Languages
+<a name='translation'>
 As of now there are not much to translate. However it might expand as the package grows. Here are instructions on how to translate:
 
 In the `src/languages/` folder and check out the other translations.
