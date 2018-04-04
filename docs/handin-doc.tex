@@ -70,6 +70,25 @@ If you found any bugs or want new functionality, to contribute, view the comment
 \tableofcontents
 \clearpage
  \section{Reference}
+\subsection{Making exercises}
+Here are commands related to creating exercises
+\begin{docCommand}{problem}{\marg{text}}
+ This command will print out a problem header. For example \dac{problem}\{1\}
+ prints a nice big header \textbf{Problem 1} You can do a star (*) after \dac{problem} to
+ prevent it from showing in the table of contents
+\end{docCommand}
+\begin{docCommand}{problem}{}
+ Does the same as \dac{problem}, but does not add the problem to the table of contents
+\end{docCommand}
+\begin{docCommand}{pproblem}{\marg{text}}
+ This command will print out a part problem header based on what problem you are on.
+ For example if you already have done \dac{problem}\{1\}, then \dac{pproblem}\{a\}
+ prints a nice big header \textbf{(1a)}. You can do a star (*) after \dac{pproblem} to
+ prevent it from showing in the table of contents
+\end{docCommand}
+\begin{docCommand}{pproblem}{}
+ Does the same as \dac{pproblem}, but does not add the part problem to the table of contents
+\end{docCommand}
 \subsection{Page formatting commands}
 This package redefines \dac{maketitle}.
 Here are some front-page commands. See layout.pdf for where they will appear.
@@ -113,23 +132,6 @@ The current language is set by the \texttt{iflang} package, so you can use e.g. 
 \usepackage[german]{babel}
 \end{dispListing}
 \subsection{General reference}
-\begin{docCommand}{problem}{\marg{text}}
- This command will print out a problem header. For example \dac{problem}\{1\}
- prints a nice big header \textbf{Problem 1} You can do a star (*) after \dac{problem} to
- prevent it from showing in the table of contents
-\end{docCommand}
-\begin{docCommand}{problem}{}
- Does the same as \dac{problem}, but does not add the problem to the table of contents
-\end{docCommand}
-\begin{docCommand}{pproblem}{\marg{text}}
- This command will print out a part problem header based on what problem you are on.
- For example if you already have done \dac{problem}\{1\}, then \dac{pproblem}\{a\}
- prints a nice big header \textbf{(1a)}. You can do a star (*) after \dac{pproblem} to
- prevent it from showing in the table of contents
-\end{docCommand}
-\begin{docCommand}{pproblem}{}
- Does the same as \dac{pproblem}, but does not add the part problem to the table of contents
-\end{docCommand}
 \begin{docCommand}{settable}{\marg{text}}
 \begin{dispListing}
  \settable{hello}
