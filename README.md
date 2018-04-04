@@ -51,8 +51,8 @@ use the [docs](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pd
 Since this package is in early stages, the CTAN-version is probably not the latest version though. There will be multiple builds pushed here first. Current CTAN-version is `0.0.2 build 30`.
 
 ## Quickstart
-Install with TeXLive or MikTeX or download the latest version herer: [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip), and in your document use:
-`\usepackage{handin}`. There is an example included in the [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
+
+To install TeXLive or MikTeX, download the latest version here: [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip), then, in your document, use: `\usepackage{handin}`. There is an example included in the [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
 
 
 ## Quick docs:
