@@ -17,7 +17,7 @@ function tex_compile(){
 # - example.tex : Contains example code
 # - universityTromsoLogo.pdf : An image to be used in the example
 add_to_CTANDir layout.tex example.tex img/universityTromsoLogo.pdf
-
+cp "$CTANDir/$outfile" "$mainDir/"
 # - example.pdf : Output of example.tex
 tex_compile "example"
 # - layout.pdf : Contains an overview on which macro goes where in the new \maketitle

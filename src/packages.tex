@@ -6,16 +6,16 @@
 \input{exercisecmds}
 \usepackage{fancyhdr}
 \usepackage{geometry}
-% Mathematik
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{bm}
 \usepackage{esint}
 \usepackage{iflang}
+\usepackage{etoolbox}
 
 % Character protrusion and font expansion. See https://www.ctan.org/pkg/microtype.
 \usepackage[
-  babel=true, % Enable language-specific kerning. Take language-settings from the languge of the current document (see Section 6 of microtype.pdf)
+  babel=true, % Enable language-specific kerning. Take language-settings from the language of the current document (see Section 6 of microtype.pdf)
   expansion=alltext,
   protrusion=alltext-nott, % Ensure that at listings, there is no change at the margin of the listing
   final % Always enable microtype, even if in draft mode. This helps finding bad boxes quickly.

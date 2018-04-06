@@ -1,4 +1,6 @@
 %!TEX root = main.tex
+\newlength{\extramargins}
+\setlength{\extramargins}{4em}
 \input{packages}
 \input{languages/languagedelegator}
 \newif\ifshowoff
@@ -45,6 +47,6 @@
 % Header and footers
 \fancyhf{}
 % Make top header line wider
-\addtolength\headwidth{4em}
-\fancyheadoffset{2em}
+\addtolength\headwidth{\extramargins}
+\fancyheadoffset{\dimexpr \extramargins/2\relax}
 \pagestyle{fancy}
