@@ -1,12 +1,12 @@
 %!TEX root = main.tex
 \makeatletter
 \let\old@maketitle = \maketitle
-\def\maketitle{
+\gdef\maketitle{
 	\old@maketitle
 	\thispagestyle{empty}
 	\clearpage
 }
-\def\@maketitle{%
+\gdef\@maketitle{%
 	\input{fp}
 	\rhead{\@author}
 	\lhead{\@coursename - \@coursetitle}
