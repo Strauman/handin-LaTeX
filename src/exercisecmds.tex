@@ -5,6 +5,35 @@
 %:Here are commands related to creating exercises
 %:-
 \makeatletter
+\newlength{\partproblemheadermargin}
+\newlength{\problemheadermargin}
+\newlength{\probleminset}
+\setlength{\problemheadermargin}{0em}
+\setlength{\probleminset}{2.5em}
+\setlength{\partproblemheadermargin}{2em}
+
+
+\def\fullproblemmargin{\dimexpr -\extramargins/2+\problemheadermargin\relax}
+\def\fullpartproblemmargin{\dimexpr \marginparsep+\partproblemheadermargin\relax}
+
+\def\strud{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+
+\newcommand{\atMargin}[2]{\strud\vadjust{\domark{#1}{#2}}}
+
+\newcommand{\domark}[2]{%
+  \hbox to #2{
+    \vbox to 0pt{
+      \kern-\dp\strutbox
+      \smash{\llap{#1\kern1em}}
+      \vss
+    }%
+  }
+}
+\gdef\isFirstProblem{1}
+\def\AtFirstProblem{
+\begin{addmargin}{\probleminset}
+\preto\@enddocumenthook{\end{addmargin}}
+}
 %Macro containing exercise number
 \def\exerciseNr{0}
 %:=\problem{text}
@@ -21,14 +50,16 @@
   \@problem{#1}
 }
 \newcommand{\@problem}[1]{
+\def\isTrue{1}
+\if\isFirstProblem\isTrue%
+\AtFirstProblem
+\gdef\isFirstProblem{0}
+\fi
 % Update exercise number
-  \def\exerciseNr{#1}
-% Move margins
-  \begin{addmargin}{-1.5em}
-% Problem and problem number
-    {\normalfont\Large\bfseries \@tr{Problem} #1}
-% Move margins back
-  \end{addmargin}
+  \def\exerciseNr{#1}%
+  \vbox to 0pt{%
+    \hspace*{\fullproblemmargin}{\normalfont\Large\bfseries \@tr{Problem} #1}%
+  }\vspace*{1.5\baselineskip}%
 }
 %:=\pproblem{text}
 %: This command will print out a part problem header based on what problem you are on.
@@ -44,10 +75,10 @@
   \addcontentsline{toc}{subsection}{\exerciseNr #1}
   \@pproblem{#1}
 }
-\newcommand{\@pproblem}[1]{
+\newcommand{\@pproblem}[1]{%
 % Make some space above
-  \vspace*{1em}
+\vspace*{1em}%
 % Write out problem number and letter
-  \hspace*{-0.5em}{\normalfont\Large\bfseries \exerciseNr #1)}
+\atMargin{{\normalfont\Large\bfseries \exerciseNr #1)}}{\fullpartproblemmargin}%
 }
 \makeatother
