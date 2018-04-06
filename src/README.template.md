@@ -4,7 +4,7 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
 
 ## Table of contents
 * Resources:
-  * [Latest version (@@VERSIONB) (.zip)](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
+  * [Latest version (@@VERSION)(.zip)](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
   * [Package documentation (.pdf)](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf)
   * Layout of front page: [layout.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/layout.pdf?raw=true)
   * [How to document this package (.tex)](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
