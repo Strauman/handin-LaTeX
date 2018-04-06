@@ -19,7 +19,6 @@ All of the code are distributed within the `src`-folder. Here is an overview. Fi
 - `languages/` see next header (below) for translation instructions
 - [`example.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/example.tex) is the file that will be posted as an example of use on CTAN
 - [`exercisecmds.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/exercisecmds.tex) contains all commands related to creating problems and part problems
-- [`fp.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/fp.tex) is executed when `\maketitle` is run. "fp" is short for "front page"
 - (`layout.tex`) is just used for creating the front page layout preview file on CTAN.
 - [`main.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/main.tex) this is the main file you should be working in when you are working on the package
 - (`packagehead.tex`): All the files are compiled into one `.sty`-file before sent to [CTAN](http://ctan.org). This file contains the top of that `.sty`-file.
@@ -29,7 +28,7 @@ All of the code are distributed within the `src`-folder. Here is an overview. Fi
 - [`settable.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/settable.tex) contains a macro for generating user-settables. See top of file for usage.
 - (`texpack.tex`) is built when generating the `.sty` file
 - (`texpackvars.ini`) contains information about the version and the like for automatic package generation
-- [`titlemaker.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/titlemaker.tex) redefines `\maketitle` and sets headers and footers
+- [`titlemaker.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/titlemaker.tex) redefines `\maketitle` and sets front page, headers and footers
 
 ## Translations / Languages
 As of now there are not much to translate. However it might expand as the package grows. Here are instructions on how to translate:

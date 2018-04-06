@@ -1,5 +1,5 @@
-%% handin v0.0.3b41 - 2018/04/06
-%% The LaTeX package handin - version v0.0.3 (2018/04/06) build 41
+%% handin v0.0.3b42 - 2018/04/06
+%% The LaTeX package handin - version v0.0.3 (2018/04/06) build 42
 %% handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -120,31 +120,31 @@
 	\clearpage
 }
 \gdef\@maketitle{%
-\begin{center}
-  \ifshowoff
-    \Huge{\textbackslash logo}\\
-    \Large{\@title} \\[1.5cm]
-  \else
-  \ifset@logo{    \includegraphics[scale=1]{\@logo}\\[0.5cm]
-    \Large{\@title} \\[1.5cm]
-}{    \ea\@latex@warning{Use \noexpand\logo{path/to/image} to set a logo on the front page}
-    \Huge{\@title} \\[1.0cm]
+	\begin{center}
+		\ifshowoff
+			\Huge{\textbackslash logo}\\
+			\Large{\@title} \\[1.5cm]
+		\else
+		\ifset@logo{			\includegraphics[scale=1]{\@logo}\\[0.5cm]
+			\Large{\@title} \\[1.5cm]
+}{			\ea\@latex@warning{Use \noexpand\logo{path/to/image} to set a logo on the front page}
+			\Huge{\@title} \\[1.0cm]
 }
-  \fi
-\end{center}
-\begin{center}
-  \textbf{\@coursename - \@coursetitle}\\[1cm]
-  \textbf{\@author} \\[1cm]
-  \textbf{\today} \\[3cm]
-\end{center}
-\begin{center}
-  \vfill
-  \ifset@containspages{    \@containspages
-}{    \@tr{containspages}
+		\fi
+	\end{center}
+	\begin{center}
+		\textbf{\@coursename - \@coursetitle}\\[1cm]
+		\textbf{\@author} \\[1cm]
+		\textbf{\today} \\[3cm]
+	\end{center}
+	\begin{center}
+		\vfill
+		\ifset@containspages{			\@containspages
+}{			\@tr{containspages}
 }\\[0.5cm]
-  \textsc{\@institute}
-\end{center}
- 	\rhead{\@author}
+		\textsc{\@institute}
+	\end{center}
+	\rhead{\@author}
 	\lhead{\@coursename - \@coursetitle}
 	\ifset@pagetext{		\rfoot{\@pagetext}
 }{		\rfoot{\@tr{pagetext}}
