@@ -1,5 +1,5 @@
 %% handin v0.0.4-beta - 2018/04/06
-%% The LaTeX package handin - version v0.0.4-beta (2018/04/06) build 43
+%% The LaTeX package handin - version v0.0.4-beta (2018/04/06) build 44
 %% handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -24,15 +24,14 @@
 \newlength{\problemheadermargin}
 \newlength{\probleminset}
 \setlength{\problemheadermargin}{0em}
-\setlength{\probleminset}{2.5em}
+\setlength{\probleminset}{3em}
 \setlength{\partproblemheadermargin}{2em}
 \def\fullproblemmargin{\dimexpr -\extramargins/2+\problemheadermargin\relax}
-\def\fullpartproblemmargin{\dimexpr\marginparsep+\partproblemheadermargin\relax}
-\def\strud{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
-\newcommand{\atMargin}[2]{\strud\vadjust{\domark{#1}{#2}}}
+\def\fullpartproblemmargin{\dimexpr\partproblemheadermargin\relax}
+\newcommand{\atMargin}[2]{\strut\vadjust{\domark{#1}{#2}}}
 \newcommand{\domark}[2]{%
   \hbox to #2{    \vbox to 0pt{      \kern-\dp\strutbox
-      \smash{\llap{#1\kern1em}}
+      \smash{\llap{#1}}
       \vss
 }%
 }
@@ -42,27 +41,29 @@
 \preto\@enddocumenthook{\end{addmargin}}
 }
 \def\exerciseNr{0}
-\gdef\problem{\@ifnextchar*{\expandafter\@problem\@secondoftwo}{\@problemTOC}}
-\gdef\@problemTOC#1{  \addcontentsline{toc}{section}{\@tr{Problem} #1}
-  \@problem{#1}
+\gdef\problem{\@ifstar{\@problem}{\@problemTOC}}
+\gdef\@problemTOC#1{%
+  \addcontentsline{toc}{section}{\@tr{Problem} #1}%
+  \@problem{#1}%
 }
-\newcommand{\@problem}[1]{\def\isTrue{1}
+\def\@problem#1{%
+\def\isTrue{1}%
 \if\isFirstProblem\isTrue%
-\AtFirstProblem
-\gdef\isFirstProblem{0}
-\fi
+\AtFirstProblem%
+\gdef\isFirstProblem{0}%
+\fi%
   \def\exerciseNr{#1}%
   \vbox to 0pt{%
     \hspace*{\fullproblemmargin}{\normalfont\Large\bfseries \@tr{Problem} #1}%
 }\vspace*{1.5\baselineskip}%
 }
-\gdef\pproblem{\@ifnextchar*{\expandafter\@pproblem\@secondoftwo}{\@pproblemTOC}}
-\gdef\@pproblemTOC#1{  \addcontentsline{toc}{subsection}{\exerciseNr #1}
-  \@pproblem{#1}
+\gdef\pproblem{\@ifstar{\@pproblem}{\@pproblemTOC}}
+\gdef\@pproblemTOC#1{%
+  \addcontentsline{toc}{subsection}{\exerciseNr #1}%
+  \@pproblem{#1}%
 }
-\newcommand{\@pproblem}[1]{%
-\vspace*{1em}%
-\atMargin{{\normalfont\Large\bfseries\exerciseNr #1)}}{\fullpartproblemmargin}%
+\def\@pproblem#1{%
+\atMargin{{\normalfont\Large\bfseries\exerciseNr #1)}}{\fullpartproblemmargin}\ignorespaces%
 }
  \usepackage{fancyhdr}
 \usepackage{geometry}

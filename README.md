@@ -28,7 +28,7 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
     * [Translations](https://github.com/Strauman/Handin-LaTeX-template/blob/master/.github/CONTRIBUTING.md#translations--languages)
 
 ## Versions
-The current latest version available on GitHub is v0.0.4-beta (2018/04/06) build 43
+The current latest version available on GitHub is v0.0.4-beta (2018/04/06) build 44
 
 The current latest version available on CTAN is v0.0.3 (2018/04/04) build 41
 
