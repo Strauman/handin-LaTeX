@@ -1,5 +1,5 @@
-%% handin v0.0.3b41 - 2018/04/06
-%% The LaTeX package handin - version v0.0.3 (2018/04/06) build 41
+%% handin v0.0.4b42 - 2018/04/06
+%% The LaTeX package handin - version v0.0.4 (2018/04/06) build 42
 %% handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -13,27 +13,56 @@
 %% version 2008/05/04 or later.
 %% This work has the LPPL maintenance status `author-maintained'.
 %% This work consists of all files listed in README.txt
-\ProvidesPackage{handin}[2018/04/06 v0.0.3 Creates a setup that is ideal for handing in hard-science school papers that are divided in exercises.]
+\ProvidesPackage{handin}[2018/04/06 v0.0.4 Creates a setup that is ideal for handing in hard-science school papers that are divided in exercises.]
+\newlength{\extramargins}
+\setlength{\extramargins}{4em}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{lastpage}
 \usepackage{scrextend}
+\newlength{\partproblemheadermargin}
+\newlength{\problemheadermargin}
+\newlength{\probleminset}
+\setlength{\problemheadermargin}{0em}
+\setlength{\probleminset}{2.5em}
+\setlength{\partproblemheadermargin}{2em}
+\def\fullproblemmargin{\dimexpr -\extramargins/2+\problemheadermargin\relax}
+\def\fullpartproblemmargin{\dimexpr\marginparsep+\partproblemheadermargin\relax}
+\def\strud{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+\newcommand{\atMargin}[2]{\strud\vadjust{\domark{#1}{#2}}}
+\newcommand{\domark}[2]{%
+  \hbox to #2{    \vbox to 0pt{      \kern-\dp\strutbox
+      \smash{\llap{#1\kern1em}}
+      \vss
+}%
+}
+}
+\gdef\isFirstProblem{1}
+\def\AtFirstProblem{\begin{addmargin}{\probleminset}
+\preto\@enddocumenthook{\end{addmargin}}
+}
 \def\exerciseNr{0}
 \gdef\problem{\@ifnextchar*{\expandafter\@problem\@secondoftwo}{\@problemTOC}}
 \gdef\@problemTOC#1{  \addcontentsline{toc}{section}{\@tr{Problem} #1}
   \@problem{#1}
 }
-\newcommand{\@problem}[1]{  \def\exerciseNr{#1}
-  \begin{addmargin}{-1.5em}
-    {\normalfont\Large\bfseries \@tr{Problem} #1}
-  \end{addmargin}
+\newcommand{\@problem}[1]{\def\isTrue{1}
+\if\isFirstProblem\isTrue%
+\AtFirstProblem
+\gdef\isFirstProblem{0}
+\fi
+  \def\exerciseNr{#1}%
+  \vbox to 0pt{%
+    \hspace*{\fullproblemmargin}{\normalfont\Large\bfseries \@tr{Problem} #1}%
+}\vspace*{1.5\baselineskip}%
 }
 \gdef\pproblem{\@ifnextchar*{\expandafter\@pproblem\@secondoftwo}{\@pproblemTOC}}
 \gdef\@pproblemTOC#1{  \addcontentsline{toc}{subsection}{\exerciseNr #1}
   \@pproblem{#1}
 }
-\newcommand{\@pproblem}[1]{  \vspace*{1em}
-  \hspace*{-0.5em}{\normalfont\Large\bfseries\exerciseNr #1)}
+\newcommand{\@pproblem}[1]{%
+\vspace*{1em}%
+\atMargin{{\normalfont\Large\bfseries\exerciseNr #1)}}{\fullpartproblemmargin}%
 }
  \usepackage{fancyhdr}
 \usepackage{geometry}
@@ -42,6 +71,19 @@
 \usepackage{bm}
 \usepackage{esint}
 \usepackage{iflang}
+\usepackage{etoolbox}
+\usepackage[
+  babel=true, %
+  expansion=alltext,
+  protrusion=alltext-nott, %
+  final %
+]{microtype}
+\usepackage[%
+    rm={oldstyle=false,proportional=true},%
+    sf={oldstyle=false,proportional=true},%
+    tt={oldstyle=false,proportional=true,variable=true},%
+    qt=false%
+]{cfr-lm}
 \def\@tr#1{  \ifcsname tr@#1\endcsname%
     \csname tr@#1\endcsname%
   \else%
@@ -111,8 +153,8 @@
 \setlength\parindent{0pt}
 \geometry{paper=a4paper, bottom=3cm, top=3cm, footnotesep=3cm}
 \fancyhf{}
-\addtolength\headwidth{4em}
-\fancyheadoffset{2em}
+\addtolength\headwidth{\extramargins}
+\fancyheadoffset{\dimexpr\extramargins/2\relax}
 \pagestyle{fancy}
 \let\old@maketitle = \maketitle
 \gdef\maketitle{	\old@maketitle
