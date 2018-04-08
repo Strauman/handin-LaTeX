@@ -34,12 +34,11 @@
 %: Here you can set a string that shows on bottom. Default is\\
 %: \containspages{Contains \pageref\brackets{LastPage} pages, front page included}
 %:-
-\settable{containspages}
+\settable[\@tr{containspages}]{containspages}
 %:=\pagetext{string}
 %: This is the text that is on the bottom right corner reading "Page x of y". Default is
 %: \pagetext{Page \thepage~of \pageref{LastPage}}
 %:-
-\settable{pagetext}
 
 \setlength\parindent{0pt}
 % Smaller margins
@@ -50,3 +49,4 @@
 \addtolength\headwidth{\extramargins}
 \fancyheadoffset{\dimexpr \extramargins/2\relax}
 \pagestyle{fancy}
+\settable[\@tr{pagetext}]{pagetext}
