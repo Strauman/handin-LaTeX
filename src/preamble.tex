@@ -6,16 +6,31 @@
 \newif\ifshowoff
 \showofffalse
 \input{settable}
+
+\makeatletter
 %:§fp
 %:This package redefines \maketitle.
 %:Here are some front-page commands. See layout.pdf for where they will appear.
 %:These commands all have to be executed in the preamble (that is after \documentclass and before \begin{document})\\
-%:The \title and \author commands are as per usual:
+%:The \title and \author commands are as per usual,
+%:but are made lasting (not cleared by \maketitle) with \thetitle and \theauthor for use in headers and footers
 %:-
 %:=\title{title}
 \settable{title}
+%% Define \thetitle as a lasting alias for \@title
+\let\@tmp@title\title
+\gdef\title#1{
+    \@tmp@title{#1}
+    \gdef\thetitle{#1}
+}
 %:=\author{your name}
 \settable{author}
+%% Define \theauthor as a lasting alias for \@author
+\let\@tmp@author\author
+\gdef\author#1{
+    \@tmp@author{#1}
+    \gdef\theauthor{#1}
+}
 %:=\logo{path/to/image}
 %: If you want an image below the title, you provide the path to the image here
 %:-
@@ -40,3 +55,4 @@
 %: \pagetext{Page \thepage~of \pageref{LastPage}}
 %:-
 \settable[\@tr{pagetext}]{pagetext}
+\makeatother
