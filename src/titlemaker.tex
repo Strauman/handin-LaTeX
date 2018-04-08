@@ -7,7 +7,6 @@
 	\clearpage
 }
 \gdef\@maketitle{%
-%% Define new frontpage style
 	\begin{center}
 		\ifshowoff
 			\Huge{\textbackslash logo}\\
@@ -30,11 +29,7 @@
 
 	\begin{center}
 		\vfill
-		\ifset@containspages{
-			\@containspages
-		}{
-			\@tr{containspages}
-		}\\[0.5cm]
+		\@containspages\\[0.5cm]
 		\textsc{\@institute}
 	\end{center}
 }
