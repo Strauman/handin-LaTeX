@@ -7,6 +7,7 @@
 	\clearpage
 }
 \gdef\@maketitle{%
+%% Define new frontpage style
 	\begin{center}
 		\ifshowoff
 			\Huge{\textbackslash logo}\\
@@ -36,8 +37,12 @@
 		}\\[0.5cm]
 		\textsc{\@institute}
 	\end{center}
-	\rhead{\@author}
+
+	%% Set header
 	\lhead{\@coursename~--~\@coursetitle}
+	\cfoot{}
+	\rhead{}
+
 	%% Set footer
 	\ifset@pagetext{
 		\lfoot{}
