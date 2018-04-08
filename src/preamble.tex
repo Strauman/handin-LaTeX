@@ -39,14 +39,4 @@
 %: This is the text that is on the bottom right corner reading "Page x of y". Default is
 %: \pagetext{Page \thepage~of \pageref{LastPage}}
 %:-
-
-\setlength\parindent{0pt}
-% Smaller margins
-\geometry{paper=a4paper, bottom=3cm, top=3cm, footnotesep=3cm}
-% Header and footers
-\fancyhf{}
-% Make top header line wider
-\addtolength\headwidth{\extramargins}
-\fancyheadoffset{\dimexpr \extramargins/2\relax}
-\pagestyle{fancy}
 \settable[\@tr{pagetext}]{pagetext}
