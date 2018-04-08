@@ -38,9 +38,14 @@
 	\end{center}
 	\rhead{\@author}
 	\lhead{\@coursename~--~\@coursetitle}
+	%% Set footer
 	\ifset@pagetext{
+		\lfoot{}
+		\cfoot{}
 		\rfoot{\@pagetext}
 	}{
+		\lfoot{}
+		\cfoot{}
 		\rfoot{\@tr{pagetext}}
 	}
 }
