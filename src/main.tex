@@ -1,6 +1,8 @@
 %!TEX root = main.tex
 \documentclass{article}
 \usepackage[english]{babel}
+\makeatletter
+\def\inspw#1{\@latex@warning{\string#1:\meaning#1}}
 \input{preamble}
 \input{titlemaker}
 \usepackage{lipsum}
@@ -10,14 +12,21 @@
 \coursetitle{Test course}
 \institute{Institute of Physics and Technology}
 \logo{img/universityTromsoLogo}
-
+\handinsetup{logo width=0.4}
 \begin{document}
   \maketitle
 \tableofcontents
   \problem{1}
-  \pproblem{abc}
+  \pproblem{a}
   Gauss law tells us that
   \[ \oiint\limits_{S}\vec E\cdot \mathrm{d}\vec{S}=\frac{Q_{\text{enc}}}{\varepsilon_0} \]
 \pproblem{b}
 \lipsum[1-2]
+\clearpage
+\pproblem{c}
+\lipsum[2-3]
+\problem*{NotInTOC}
+\pproblem*{NotInTOC}
+\clearpage
+
 \end{document}

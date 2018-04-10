@@ -1,0 +1,67 @@
+%!TEX root = main.tex
+\makeatletter
+\edef\@isTrue{1}
+\edef\@isFalse{0}
+%:§config
+%: You can do configurations on this package, and probably
+%: even more to come in later versions!
+%:-
+\pgfkeys{
+/handinsetup/.is family, /handinsetup,
+default/.style = {
+problem header={\@tr{Problem}~\currentProblem},
+part problem header={\currentProblemIfNewPage\currentPartProblem)},
+problem TOC={\handin@opt@problemheader},
+part problem TOC={\currentPartProblem},
+logo width={0.4},
+},
+% Expanded macros
+% Unexpanded macros
+problem header/.store in = \handin@opt@problemheader,
+part problem header/.store in = \handin@opt@partproblemheader,
+problem TOC/.store in = \handin@opt@problemheaderTOC,
+part problem TOC/.store in = \handin@opt@partproblemheaderTOC,
+logo width/.estore in = \handin@opt@logowidth,
+% Bools
+% part problems/.style = {switches/#1/.get = \exbank@opt@partProblems},
+% True/False
+switches/.cd,
+% True
+  On/.initial = \@isTrue,
+  on/.initial = \@isTrue,
+  T/.initial =  \@isTrue
+% False
+  Off/.initial = \@isFalse,
+  off/.initial = \@isFalse,
+  F/.initial = \@isFalse,
+}
+%:=\handinsetup{[key/values]}
+\newcommand\handinsetup[1]{
+  \pgfkeys{/handinsetup, #1}%
+}
+\handinsetup{default}
+%: Here is a list of the different keys and their meaning
+%:-
+%:\keyDef{problem header}{macro}{\@tr{Problem}~\currentProblem}{
+%:This options contains the formatting of the problem header. Use \currentProblem to access the number of the current exercise, and \@tr{Problem} to access the translation of Problem.\\
+%:Defaults to \@tr{Problem}~\currentProblem
+%:}
+%:\keyDef{part problem header}{macro}{See below}{
+%: This defaults to: \currentProblemIfNewPage\currentPartProblem).
+%: See \refCom{currentProblemIfNewPage} and \refCom{currentPartProblem}
+%:}
+%:\keyDef{problem TOC}{macro}{\meta{contents of problem header}}{
+%: This key decides what is written to the table of contents. It defaults to extract the content in \refKey{problem header}
+%:}
+%:\keyDef{part problem TOC}{macro}{\meta{contents of part problem header}}{
+%: This key decides what is written to the table of contents. It defaults to \currentPartProblem
+%: (which is what the user last sent to \pproblem).
+%:}
+%:\keyDef{logo width}{number}{0.4}{
+%: Give as factor (between 0 and 1) of total text width.
+%: This is a temporary fix for logo not being customisable, and is scheduled to be updated in a later version.
+%:}
+%:-
+%: \!subsubsection*{Example} If you don't want to have the exercise number ever in front of the letter, then you'd do
+%:! \handinsetup{part problem header=\currentPartProblem}
+%:-

@@ -1,5 +1,5 @@
-%% handin v0.0.4-prereleaseb45 - 2018/04/08
-%% The LaTeX package handin - version v0.0.4-prerelease (2018/04/08) build 45
+%% handin v0.0.4b45 - 2018/04/10
+%% The LaTeX package handin - version v0.0.4 (2018/04/10) build 45
 %% #PACKAGE.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -24,7 +24,7 @@
   moretexcs={arrayrulecolor,draw,includegraphics,ifthenelse,isodd,lipsum,path,pgfkeysalso},
   classoffset=1,
   moretexcs={% core
-    problem,pproblem,title,author,logo,coursename,coursetitle,institute,containspages,pagetext,settable
+    problem,pproblem,title,author,logo,coursename,coursetitle,institute,containspages,pagetext,settable,handinsetup,currentProblem,currentPartProblem,currentProblemIfNewPage
   },
   texcsstyle=*\color{Definition}\bfseries,
   classoffset=0,% restore default
@@ -56,7 +56,7 @@
 
 
 \setlength{\parindent}{0pt}
-\title{{handin - manual\\ v0.0.4-prerelease{\\[-0.5em]\footnotesize(build 45)}}}
+\title{{handin - manual\\ v0.0.4{\\[-0.5em]\footnotesize(build 45)}}}
 \author{Andreas Strauman}
 \begin{document}
 \maketitle
@@ -67,7 +67,8 @@ This is a package that makes it easy for student to hand in a formatted document
 
 If you are a teacher, this package works just as well for creating exercises!\\
  
-If you found any bugs or want new functionality, to contribute, view the commented source, get latest version of this package or get in touch with me, you can do all of that at \url{https://github.com/Strauman/Handin-LaTeX-template/}
+If you found any bugs or want new functionality, to contribute, view the commented source, get latest version of this package or get in touch with me, you can do all of that at \url{https://github.com/Strauman/Handin-LaTeX-template/}. If you have questions of functionality, kindly direct them to the community\\ \url{http://tex.stackexchange.com}. The author is active on this site regularly.
+
 \tableofcontents
 \clearpage
  \section{Reference}
@@ -78,23 +79,54 @@ Here are commands related to creating exercises
  prints a nice big header \textbf{Problem 1} You can do a star (*) after \dac{problem} to
  prevent it from showing in the table of contents
 \end{docCommand}
-\begin{docCommand}{problem}{}
+\begin{docCommand}{problem*}{\marg{text}}
  Does the same as \dac{problem}, but does not add the problem to the table of contents
 \end{docCommand}
 \begin{docCommand}{pproblem}{\marg{text}}
  This command will print out a part problem header based on what problem you are on.
  For example if you already have done \dac{problem}\{1\}, then \dac{pproblem}\{a\}
- prints a nice big header \textbf{(1a)}. You can do a star (*) after \dac{pproblem} to
- prevent it from showing in the table of contents
+ prints a nice big header \textbf{(1a)}. Note that the default behaviour is such that if you are on a
+ new page, then the part problems are shown with the exercise number in front of it. If not
+ it is omitted. If you want to change this behaviour, see \dac{keyRef}\{part problem header\}
 \end{docCommand}
-\begin{docCommand}{pproblem}{}
+\begin{docCommand}{pproblem*}{\marg{text}}
  Does the same as \dac{pproblem}, but does not add the part problem to the table of contents
 \end{docCommand}
+\subsection{Package options (\dac{handinsetup})}
+ You can do configurations on this package, and probably
+ even more to come in later versions!
+\begin{docCommand}{handinsetup}{\marg{[key/values]}}
+ Here is a list of the different keys and their meaning
+\end{docCommand}
+\keyDef{problem header}{macro}{\dac{@tr}\{Problem\}~\dac{currentProblem}}{
+This options contains the formatting of the problem header. Use \dac{currentProblem} to access the number of the current exercise, and \dac{@tr}\{Problem\} to access the translation of Problem.\\
+Defaults to \dac{@tr}\{Problem\}~\dac{currentProblem}
+}
+\keyDef{part problem header}{macro}{See below}{
+ This defaults to: \dac{currentProblemIfNewPage}\dac{currentPartProblem}).
+ See \refCom{currentProblemIfNewPage} and \refCom{currentPartProblem}
+}
+\keyDef{problem TOC}{macro}{\meta{contents of problem header}}{
+ This key decides what is written to the table of contents. It defaults to extract the content in \refKey{problem header}
+}
+\keyDef{part problem TOC}{macro}{\meta{contents of part problem header}}{
+ This key decides what is written to the table of contents. It defaults to \dac{currentPartProblem}
+ (which is what the user last sent to \dac{pproblem}).
+}
+\keyDef{logo width}{number}{0.4}{
+ Give as factor (between 0 and 1) of total text width.
+ This is a temporary fix for logo not being customisable, and is scheduled to be updated in a later version.
+}
+ \subsubsection*{Example} If you don't want to have the exercise number ever in front of the letter, then you'd do
+\begin{dispListing}
+ \handinsetup{part problem header=\currentPartProblem}
+\end{dispListing}
 \subsection{Page formatting commands}
 This package redefines \dac{maketitle}.
 Here are some front-page commands. See layout.pdf for where they will appear.
 These commands all have to be executed in the preamble (that is after \dac{documentclass} and before \dac{begin}\{document\})\\
-The \dac{title} and \dac{author} commands are as per usual:
+The \dac{title} and \dac{author} commands are as per usual,
+but are made lasting (not cleared by \dac{maketitle}) with \dac{thetitle} and \dac{theauthor} for use in headers and footers
 \begin{docCommand}{title}{\marg{title}}
 \end{docCommand}
 \begin{docCommand}{author}{\marg{your name}}
@@ -133,6 +165,37 @@ The current language is set by the \texttt{iflang} package, so you can use e.g. 
 \usepackage[german]{babel}
 \end{dispListing}
 \subsection{General reference}
+\begin{docCommand}{currentProblem}{}
+Contains the argument of the last call to \dac{problem}
+\begin{dispListing}
+\pproblem{hello}
+\pproblem{world}
+\currentPartProblem %<- contains world
+\end{dispListing}
+\end{docCommand}
+\begin{docCommand}{currentPartProblem}{}
+ Just as \refCom{currentProblem}, but contains the argument of the last call to \dac{pproblem}
+\end{docCommand}
+\begin{docCommand}{currentProblemIfNewPage}{}
+If the problem is not defined on the current page, then
+The first time \dac{currentProblemIfNewPage} is called on a page,
+it expands to the current problem number. If not, it expands to empty.
+If the problem is defined on the current page, it also expands to empty.
+ This is used in the default key for the \dac{keyRef}\{part problem header\}.
+ Here are some examples
+\begin{dispListing}
+\problem{1}
+\currentProblemIfNewPage % <- empty
+\end{dispListing}
+
+
+\begin{dispListing}
+\problem{4}
+\clearpage
+\currentProblemIfNewPage % <- expands to 4
+\currentProblemIfNewPage % <- expands to empty
+\end{dispListing}
+\end{docCommand}
 \begin{docCommand}{settable}{\marg{text}}
 \begin{dispListing}
  \settable{hello}
