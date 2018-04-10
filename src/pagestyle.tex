@@ -1,0 +1,26 @@
+%!TEX root = main.tex
+\makeatletter
+% Smaller margins
+\geometry{paper=a4paper, bottom=3cm, top=3cm, footnotesep=3cm}
+\pagestyle{fancy}
+
+% Remove indentation on linebreak
+\setlength\parindent{0pt}
+
+% Make top header line wider
+\addtolength\headwidth{\extramargins}
+\fancyheadoffset{\dimexpr \extramargins/2\relax}
+
+
+%% Set header
+    \renewcommand{\headrulewidth}{.3pt} %% Change width of line under header
+    \lhead{\@coursename~--~\thetitle}
+    \cfoot{}
+    \rhead{\today}
+
+%% Set footer
+    \renewcommand{\footrulewidth}{.3pt} %% Change width of line over footer
+    \lfoot{\theauthor}
+    \cfoot{}
+    \rfoot{\@pagetext}
+\makeatother
