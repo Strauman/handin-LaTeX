@@ -1,0 +1,27 @@
+%%
+%% This is a copy of the body of the file `everypage.sty'
+%%
+\makeatletter
+\newcommand{\epage@everypage@hook}{}
+\newcommand{\epage@thispage@hook}{}
+\newcommand*{\AddEverypageHook}[1]{%
+  \g@addto@macro\epage@everypage@hook{#1}}
+\newcommand*{\AddThispageHook}[1]{%
+  \g@addto@macro\epage@thispage@hook{#1}}
+\newcommand*{\epage@ep@init}{%
+  \let\epage@op@saved\@outputpage
+  \def\@outputpage{%
+    \epage@op@preamble
+    \epage@op@saved
+    \epage@op@postamble}}
+\newcommand*{\epage@op@preamble}{%
+  \let\epage@begindvi\@begindvi
+  \def\@begindvi{%
+    \epage@everypage@hook
+    \epage@thispage@hook
+    \gdef\epage@thispage@hook{}
+    \epage@begindvi}}
+\newcommand*{\epage@op@postamble}{%
+  \let\@begindvi\epage@begindvi}
+\AtBeginDocument{\epage@ep@init}
+\makeatother

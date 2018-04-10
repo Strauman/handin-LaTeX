@@ -14,12 +14,12 @@
 
 
 \def\fullproblemmargin{\dimexpr -\extramargins/2+\problemheadermargin\relax}
-\def\fullpartproblemmargin{\dimexpr \partproblemheadermargin\relax}
+\def\fullpartproblemmargin{\dimexpr\partproblemheadermargin\relax}
 
 
-\newcommand{\atMargin}[2]{\strut\vadjust{\domark{#1}{#2}}}
+\newcommand{\@atMargin}[2]{\strut\vadjust{\@domark{#1}{#2}}}
 
-\newcommand{\domark}[2]{%
+\newcommand{\@domark}[2]{%
   \hbox to #2{
     \vbox to 0pt{
       \kern-\dp\strutbox
@@ -34,7 +34,44 @@
 \preto\@enddocumenthook{\end{addmargin}}
 }
 %Macro containing exercise number
-\def\exerciseNr{0}
+%!! DOCS ON BOTTOM OF FILE !!
+\gdef\currentProblem{0}
+\gdef\currentPartProblem{0}
+% For backward compability
+\def\exerciseNr{\currentProblem}
+%:§ref
+%:=\currentProblem
+%:Contains the argument of the last call to \problem
+%:!\pproblem{hello}
+%:!\pproblem{world}
+%:!\currentPartProblem %<- contains world
+%:=\currentPartProblem
+%: Just as \refCom{currentProblem}, but contains the argument of the last call to \pproblem
+%:=\currentProblemIfNewPage
+%:If the problem is not defined on the current page, then
+%:The first time \currentProblemIfNewPage is called on a page,
+%:it expands to the current problem number. If not, it expands to empty.
+%:If the problem is defined on the current page, it also expands to empty.
+%: This is used in the default key for the \keyRef{part problem header}.
+%: Here are some examples
+%:!\problem{1}
+%:!\currentProblemIfNewPage % <- empty
+%:
+%:!\problem{4}
+%:!\clearpage
+%:!\currentProblemIfNewPage % <- expands to 4
+%:!\currentProblemIfNewPage % <- expands to empty
+%:-
+% Functionality for showing e.g 1c) if it is the first part problem on
+% the page and only e.g. d) if it is not
+\global\let\@ProblemOnThisPage\@isTrue%
+\AddEverypageHook{%
+\global\let\@ProblemOnThisPage\@isFalse%
+}
+\gdef\currentProblemIfNewPage{\if\@ProblemOnThisPage\@isFalse%
+\global\let\@ProblemOnThisPage\@isTrue%
+\currentProblem\fi}%
+%:§ex
 %:=\problem{text}
 %: This command will print out a problem header. For example \problem{1}
 %: prints a nice big header \!textbf{Problem 1} You can do a star (*) after \problem to
@@ -45,37 +82,42 @@
 %:-
 \gdef\problem{\@ifstar{\@problem}{\@problemTOC}}
 \gdef\@problemTOC#1{%
-  \addcontentsline{toc}{section}{\@tr{Problem} #1}%
+  \gdef\currentProblem{#1}%
+  \addcontentsline{toc}{section}{\handin@opt@problemheaderTOC}%
   \@problem{#1}%
 }
 \def\@problem#1{%
+\global\let\@ProblemOnThisPage\@isTrue
 \def\isTrue{1}%
 \if\isFirstProblem\isTrue%
 \AtFirstProblem%
 \gdef\isFirstProblem{0}%
 \fi%
 % Update exercise number
-  \def\exerciseNr{#1}%
+  \gdef\currentProblem{#1}%
   \vbox to 0pt{%
-    \hspace*{\fullproblemmargin}{\normalfont\Large\bfseries \@tr{Problem} #1}%
+    \hspace*{\fullproblemmargin}{\normalfont\Large\bfseries\handin@opt@problemheader}%
   }\vspace*{1.5\baselineskip}%
 }
 %:=\pproblem{text}
 %: This command will print out a part problem header based on what problem you are on.
 %: For example if you already have done \problem{1}, then \pproblem{a}
-%: prints a nice big header \!textbf{(1a)}. You can do a star (*) after \pproblem to
-%: prevent it from showing in the table of contents
+%: prints a nice big header \!textbf{(1a)}. Note that the default behaviour is such that if you are on a
+%: new page, then the part problems are shown with the exercise number in front of it. If not
+%: it is omitted. If you want to change this behaviour, see \keyRef{part problem header}
 %:-
 %:=\pproblem*{text}
 %: Does the same as \pproblem, but does not add the part problem to the table of contents
 %:-
 \gdef\pproblem{\@ifstar{\@pproblem}{\@pproblemTOC}}
 \gdef\@pproblemTOC#1{%
-  \addcontentsline{toc}{subsection}{\exerciseNr #1}%
-  \@pproblem{#1}%
+  \gdef\currentPartProblem{#1}
+  \addcontentsline{toc}{subsection}{\handin@opt@partproblemheaderTOC}%
+  \@pproblem{\currentPartProblem}%
 }
 \def\@pproblem#1{%
 % Write out problem number and letter
-\atMargin{{\normalfont\Large\bfseries \exerciseNr #1)}}{\fullpartproblemmargin}\ignorespaces%
+\@atMargin{{\normalfont\Large\bfseries\handin@opt@partproblemheader}}{\fullpartproblemmargin}\ignorespaces%
 }
+
 \makeatother

@@ -17,8 +17,10 @@ All of the code are distributed within the `src`-folder. Here is an overview. Fi
 ### `src/`:
 - (`aftercompile.sh`) is just instructions to perform after the `.sty` and the documentation is created.
 - `languages/` see next header (below) for translation instructions
+- [`everypage.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/everypage.tex) contains logic for executing macros at every page. Mostly identical to the [everypage package](http://ctan.org/pkg/everypage)
 - [`example.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/example.tex) is the file that will be posted as an example of use on CTAN
 - [`exercisecmds.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/exercisecmds.tex) contains all commands related to creating problems and part problems
+- [`handinsetup.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/handinsetup.tex)Contains all logic for user options.
 - (`layout.tex`) is just used for creating the front page layout preview file on CTAN.
 - [`main.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/main.tex) this is the main file you should be working in when you are working on the package
 - (`packagehead.tex`): All the files are compiled into one `.sty`-file before sent to [CTAN](http://ctan.org). This file contains the top of that `.sty`-file.

@@ -1,19 +1,17 @@
 %!TEX root = main.tex
 \makeatletter
 \let\old@maketitle = \maketitle
-\gdef\maketitle{
-	\old@maketitle
+\gdef\@maketitle{\handin@opt@titlestyle}
+
+\gdef\handin@title@wholepage{%
 	\thispagestyle{empty}
-	\clearpage
-}
-\gdef\@maketitle{%
 	\begin{center}
 		\ifshowoff
 			\Huge{\textbackslash logo}\\
 			\Large{\@title} \\[1.5cm]
 		\else
 		\ifset@logo{
-			\includegraphics[scale=1]{\@logo}\\[0.5cm]
+			\includegraphics[width=\handin@opt@logowidth\textwidth]{\@logo}\\[0.5cm]
 			\Large{\@title} \\[1.5cm]
 		}{
 			\ea\@latex@warning{Use \noexpand\logo{path/to/image} to set a logo on the front page}
@@ -31,6 +29,23 @@
 		\vfill
 		\@containspages\\[0.5cm]
 		\textsc{\@institute}
+	\end{center}
+	\clearpage
+}
+
+\gdef\handin@title@small{%
+	\begin{center}
+		\ifshowoff
+			\Huge{\textbackslash logo}\\[0.5cm]
+		\else
+		\ifset@logo{
+			\includegraphics[width=\handin@opt@logowidth\textwidth]{\@logo} \\[0.5cm]
+		}{
+			\ea\@latex@warning{Use \noexpand\logo{path/to/image} to set a logo on the front page}
+		}
+		\fi
+		{\huge{\textbf{ \@coursename~--~\@coursetitle \\[0.3cm] \@title}}}\\[0.3cm]
+		{\large \@author}
 	\end{center}
 }
 \makeatother
