@@ -6,8 +6,22 @@
 
 
 ## Getting the repo
-Run `https://github.com/Strauman/Handin-LaTeX-template.git /path/to/where/you/want the files`
+Fork the repo it (use the fork button on the top right of the page).
 Then build the `src/main.tex` file with your favorite latex interpreter.
+
+## Branching
+Make your own branch. Preferably named something related to what you're trying to do:
+
+```
+git branch mynewfeature
+git checkout mynewfeature
+```
+
+Now do your changes and do
+
+`git add FILENAME1.tex FILENAME2.tex`, where you replace `FILENAMEX.tex` with the files you have edited.
+
+Then do `git push origin mynewfeature` and create a pull request here :)
 
 ## File structure
 If you have ideas and the like, you should first add them to the issue tracker before you start writing the code. This is that you can be sure we want the code in the package before you write it.
