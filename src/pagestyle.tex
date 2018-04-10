@@ -1,3 +1,4 @@
+\makeatletter
 % Smaller margins
 \geometry{paper=a4paper}%, bottom=3cm, top=3cm, footnotesep=3cm}
 \pagestyle{fancy}
@@ -11,15 +12,12 @@
 
 
 %% Set header
-\makeatletter
     \renewcommand{\headrulewidth}{.3pt} %% Change width of line under header
     \lhead{\@coursename~--~\thetitle}
     \cfoot{}
     \rhead{\today}
-\makeatother
 
 %% Set footer
-\makeatletter
     \renewcommand{\footrulewidth}{.3pt} %% Change width of line over footer
     \lfoot{\theauthor}
     \cfoot{}
