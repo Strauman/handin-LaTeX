@@ -14,6 +14,7 @@ part problem header={\currentProblemIfNewPage\currentPartProblem)},
 problem TOC={\handin@opt@problemheader},
 part problem TOC={\currentPartProblem},
 logo width={0.4},
+title style=wholepage,
 },
 % Expanded macros
 % Unexpanded macros
@@ -24,6 +25,11 @@ part problem TOC/.store in = \handin@opt@partproblemheaderTOC,
 logo width/.estore in = \handin@opt@logowidth,
 % Bools
 % part problems/.style = {switches/#1/.get = \exbank@opt@partProblems},
+% Dict lookup
+title style/.style = {titles/#1/.get = \handin@opt@titlestyle},
+titles/.cd,
+  wholepage/.initial = \handin@title@wholepage,
+  small/.initial = \handin@title@small,
 % True/False
 switches/.cd,
 % True
@@ -60,6 +66,9 @@ switches/.cd,
 %:\keyDef{logo width}{number}{0.4}{
 %: Give as factor (between 0 and 1) of total text width.
 %: This is a temporary fix for logo not being customisable, and is scheduled to be updated in a later version.
+%:}
+%:\keyDef{title style}{wholepage or small}{wholepage}{
+%:If "wholepage", \maketitle will produce a full front-page. If "small", \maketitle will produce a smaller title containing the course name, course title, title, and author.
 %:}
 %:-
 %: \!subsubsection*{Example} If you don't want to have the exercise number ever in front of the letter, then you'd do
