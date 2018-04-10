@@ -7,7 +7,6 @@
 	\clearpage
 }
 \gdef\@maketitle{%
-
 	\begin{center}
 		\ifshowoff
 			\Huge{\textbackslash logo}\\
@@ -30,19 +29,8 @@
 
 	\begin{center}
 		\vfill
-		\ifset@containspages{
-			\@containspages
-		}{
-			\@tr{containspages}
-		}\\[0.5cm]
+		\@containspages\\[0.5cm]
 		\textsc{\@institute}
 	\end{center}
-	\rhead{\@author}
-	\lhead{\@coursename - \@coursetitle}
-	\ifset@pagetext{
-		\rfoot{\@pagetext}
-	}{
-		\rfoot{\@tr{pagetext}}
-	}
 }
 \makeatother

@@ -28,7 +28,8 @@ All of the code are distributed within the `src`-folder. Here is an overview. Fi
 - [`settable.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/settable.tex) contains a macro for generating user-settables. See top of file for usage.
 - (`texpack.tex`) is built when generating the `.sty` file
 - (`texpackvars.ini`) contains information about the version and the like for automatic package generation
-- [`titlemaker.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/titlemaker.tex) redefines `\maketitle` and sets front page, headers and footers
+- [`titlemaker.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/titlemaker.tex) redefines `\maketitle` and sets front page style.
+- [`pagestyle.tex`](https://github.com/Strauman/Handin-LaTeX-template/tree/master/src/pagestyle.tex) sets geometry, indentation, headers, footers, ect.
 
 ## Translations / Languages
 As of now there are not much to translate. However it might expand as the package grows. Here are instructions on how to translate:
