@@ -17,9 +17,9 @@
 \def\fullpartproblemmargin{\dimexpr \partproblemheadermargin\relax}
 
 
-\newcommand{\atMargin}[2]{\strut\vadjust{\domark{#1}{#2}}}
+\newcommand{\@atMargin}[2]{\strut\vadjust{\domark{#1}{#2}}}
 
-\newcommand{\domark}[2]{%
+\newcommand{\@domark}[2]{%
   \hbox to #2{
     \vbox to 0pt{
       \kern-\dp\strutbox
@@ -76,6 +76,6 @@
 }
 \def\@pproblem#1{%
 % Write out problem number and letter
-\atMargin{{\normalfont\Large\bfseries \exerciseNr #1)}}{\fullpartproblemmargin}\ignorespaces%
+\@atMargin{{\normalfont\Large\bfseries \exerciseNr #1)}}{\fullpartproblemmargin}\ignorespaces%
 }
 \makeatother
