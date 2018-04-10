@@ -1,5 +1,6 @@
 # Contributing
 * [Installation](#getting-the-repo)
+* [Branching](#branching)
 * [File structure](#file-structure)
 * [How to document (.tex)](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
 * [Translations](#translations--languages)
