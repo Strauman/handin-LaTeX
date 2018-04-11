@@ -28,9 +28,9 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
     * [Translations](https://github.com/Strauman/Handin-LaTeX-template/blob/master/.github/CONTRIBUTING.md#translations--languages)
 
 ## Versions
-The current latest version available on GitHub is v0.1.0 (2018/04/10) build 47
+The current latest version available on GitHub is v0.1.0 (2018/04/11) build 47
 
-The current latest version available on CTAN is v0.0.3 (2018/04/04) build 41
+The current latest version uploaded to [CTAN](https://ctan.org/pkg/handin) is v0.1.0 (2018/04/10) build 47
 
 *Note that it can take at least 24-48 hours from the CTAN date above until the package is updated on CTAN, TeXLive and MiKTeX.*
 
@@ -49,7 +49,7 @@ It's already a part of MikTeX, so just do `\usepackage{handin}`
 ### And then
 use the [docs](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf).
 
-Since this package is in early stages, the CTAN-version is probably not the latest version though. There will be multiple builds pushed here first. Current CTAN-version is `0.0.2 build 30`.
+Since this package is in early stages, the CTAN-version is probably not the latest version though. There will be multiple builds pushed here first.
 
 ## Quickstart
 Install with TeXLive or MikTeX, as per usual. Alternatively download the latest version here: [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip), then, in your document, use: `\usepackage{handin}`. There is an example included in the [handin.zip](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
