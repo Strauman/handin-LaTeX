@@ -1,0 +1,283 @@
+%% handin v0.1.0 - 2018/04/13
+%% The LaTeX package handin - version v0.1.0 (2018/04/13) build 46
+%% handin.sty
+%% -------------------------------------------------------------------------------------------
+%% Copyright (c) 2018 by Andreas Storvik Strauman
+%% -------------------------------------------------------------------------------------------
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008/05/04 or later.
+%% This work has the LPPL maintenance status `author-maintained'.
+%% This work consists of all files listed in README.txt
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{handin}[2018/04/13 v0.1.0 Creates a setup that is ideal for handing in hard-science school papers that are divided in exercises.]
+\newlength{\extramargins}
+\setlength{\extramargins}{4em}
+\PackageWarningNoLine{handin-v0.1.0}{This package is in the alpha stage, and if something unexpected happens please, oh pretty please, report it to https://github.com/Strauman/Handin-LaTeX-template. Thank you!}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{lastpage}
+\usepackage{scrextend}
+\newcommand{\epage@everypage@hook}{}
+\newcommand{\epage@thispage@hook}{}
+\newcommand*{\AddEverypageHook}[1]{%
+  \g@addto@macro\epage@everypage@hook{#1}}
+\newcommand*{\AddThispageHook}[1]{%
+  \g@addto@macro\epage@thispage@hook{#1}}
+\newcommand*{\epage@ep@init}{%
+  \let\epage@op@saved\@outputpage
+  \def\@outputpage{%
+    \epage@op@preamble
+    \epage@op@saved
+    \epage@op@postamble}}
+\newcommand*{\epage@op@preamble}{%
+  \let\epage@begindvi\@begindvi
+  \def\@begindvi{%
+    \epage@everypage@hook
+    \epage@thispage@hook
+    \gdef\epage@thispage@hook{}
+    \epage@begindvi}}
+\newcommand*{\epage@op@postamble}{%
+  \let\@begindvi\epage@begindvi}
+\AtBeginDocument{\epage@ep@init}
+\newlength{\partproblemheadermargin}
+\newlength{\problemheadermargin}
+\newlength{\probleminset}
+\setlength{\problemheadermargin}{0em}
+\setlength{\probleminset}{3em}
+\setlength{\partproblemheadermargin}{2em}
+\def\fullproblemmargin{\dimexpr -\extramargins/2+\problemheadermargin\relax}
+\def\fullpartproblemmargin{\dimexpr\partproblemheadermargin\relax}
+\newcommand{\@atMargin}[2]{\strut\vadjust{\@domark{#1}{#2}}}
+\newcommand{\@domark}[2]{%
+  \hbox to #2{    \vbox to 0pt{      \kern-\dp\strutbox
+      \smash{\llap{#1}}
+      \vss
+}%
+}
+}
+\gdef\isFirstProblem{1}
+\def\AtFirstProblem{\begin{addmargin}{\probleminset}
+\preto\@enddocumenthook{\end{addmargin}}
+}
+\gdef\currentProblem{0}
+\gdef\currentPartProblem{0}
+\def\exerciseNr{\currentProblem}
+\global\let\@ProblemOnThisPage\@isTrue%
+\AddEverypageHook{%
+\global\let\@ProblemOnThisPage\@isFalse%
+}
+\gdef\currentProblemIfNewPage{\if\@ProblemOnThisPage\@isFalse%
+\global\let\@ProblemOnThisPage\@isTrue%
+\currentProblem\fi}%
+\gdef\problem{\@ifstar{\@problem}{\@problemTOC}}
+\gdef\@problemTOC#1{%
+  \gdef\currentProblem{#1}%
+  \addcontentsline{toc}{section}{\handin@opt@problemheaderTOC}%
+  \@problem{#1}%
+}
+\def\@problem#1{%
+\global\let\@ProblemOnThisPage\@isTrue
+\def\isTrue{1}%
+\if\isFirstProblem\isTrue%
+\AtFirstProblem%
+\gdef\isFirstProblem{0}%
+\fi%
+  \gdef\currentProblem{#1}%
+  \vbox to 0pt{%
+    \hspace*{\fullproblemmargin}{\normalfont\Large\bfseries\handin@opt@problemheader}%
+}\vspace*{1.5\baselineskip}%
+}
+\gdef\pproblem{\@ifstar{\@pproblem}{\@pproblemTOC}}
+\gdef\@pproblemTOC#1{%
+  \gdef\currentPartProblem{#1}
+  \addcontentsline{toc}{subsection}{\handin@opt@partproblemheaderTOC}%
+  \@pproblem{\currentPartProblem}%
+}
+\def\@pproblem#1{%
+\@atMargin{{\normalfont\Large\bfseries\handin@opt@partproblemheader}}{\fullpartproblemmargin}\ignorespaces%
+}
+ \usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{esint}
+\usepackage{iflang}
+\usepackage{etoolbox}
+\usepackage{pgfkeys}
+\usepackage[
+  babel=true, %
+  expansion=alltext,
+  protrusion=alltext-nott, %
+  final %
+]{microtype}
+\usepackage[%
+    rm={oldstyle=false,proportional=true},%
+    sf={oldstyle=false,proportional=true},%
+    tt={oldstyle=false,proportional=true,variable=true},%
+    qt=false%
+]{cfr-lm}
+\edef\@isTrue{1}
+\edef\@isFalse{0}
+\pgfkeys{/handinsetup/.is family, /handinsetup,
+default/.style = {problem header={\@tr{Problem}~\currentProblem},
+part problem header={\currentProblemIfNewPage\currentPartProblem)},
+problem TOC={\handin@opt@problemheader},
+part problem TOC={\currentPartProblem},
+logo width={0.4},
+title style=wholepage,
+},
+problem header/.store in = \handin@opt@problemheader,
+part problem header/.store in = \handin@opt@partproblemheader,
+problem TOC/.store in = \handin@opt@problemheaderTOC,
+part problem TOC/.store in = \handin@opt@partproblemheaderTOC,
+logo width/.estore in = \handin@opt@logowidth,
+title style/.style = {titles/#1/.get = \handin@opt@titlestyle},
+titles/.cd,
+  wholepage/.initial = \handin@title@wholepage,
+  small/.initial = \handin@title@small,
+switches/.cd,
+  On/.initial = \@isTrue,
+  on/.initial = \@isTrue,
+  T/.initial =  \@isTrue
+  Off/.initial = \@isFalse,
+  off/.initial = \@isFalse,
+  F/.initial = \@isFalse,
+}
+\newcommand\handinsetup[1]{  \pgfkeys{/handinsetup, #1}%
+}
+\handinsetup{default}
+\def\@tr#1{  \ifcsname tr@#1\endcsname%
+    \csname tr@#1\endcsname%
+  \else%
+    #1%
+  \fi%
+}
+\newcommand{\set@tr}[2]{  \expandafter\def\csname tr@#1\endcsname{#2}
+}
+\set@tr{Problem}{Problem}
+\set@tr{problem}{problem}
+\set@tr{containspages}{Contains \pageref{LastPage} pages, front page included}
+\set@tr{pagetext}{Page \thepage~of \pageref{LastPage}}
+ \IfLanguageName{norsk}{%
+\set@tr{Problem}{Oppgave}
+\set@tr{problem}{oppgave}
+\set@tr{pagetext}{Side \thepage~av \pageref{LastPage}}
+\set@tr{containspages}{Inneholder \pageref{LastPage} sider, inkludert forside.}
+}{}
+\IfLanguageName{german}{%
+\set@tr{Problem}{Aufgabe}
+\set@tr{problem}{Aufgabe}
+\set@tr{containspages}{Enthält \pageref{LastPage} Seiten, inklusive Titelseite}
+\set@tr{pagetext}{Seite \thepage~von \pageref{LastPage}}
+}{}
+ \newif\ifshowoff
+\showofffalse
+\let\ea = \expandafter
+\newcommand{\settable}[2][\@nil]{  \ea\def\csname #2\ea\endcsname##1{    \ea\def\csname @#2\endcsname{##1}
+    \ea\def\csname @#2@noerror\endcsname{##1}
+    \ea\def\csname isset@#2\endcsname{1}
+}
+  \ea\def\csname ifset@#2\endcsname##1##2{    \ifcsname isset@#2\endcsname%
+    ##1
+    \else
+    ##2
+    \fi
+}
+  \ea\def\csname default@#2\endcsname{#1}%
+  \ea\def\csname @#2@noerror\endcsname{#1}%
+  \ea\ifx\csname default@#2\endcsname\@nnil
+    \ea\def\csname default@#2\endcsname{      \textbackslash #2%
+      {\ea\@latex@warning{\ #2 not given}}
+}
+  \fi
+  \ea\def\csname @#2\endcsname{    \csname default@#2\endcsname
+}
+}
+\ifshowoff
+\@latex@warning{Settable: showing off, no settable is actually set!}
+\renewcommand{\settable}[2][\@nil]{  \ea\def\csname #2\endcsname##1{\relax}%
+  \ea\def\csname @#2\endcsname{}%
+  \ea\def\csname @#2@noerror\endcsname{}%
+  \ea\def\csname ifset@#2\endcsname##1##2{##2}
+  \ea\def\csname default@#2\endcsname{#1}%
+  \ea\def\csname @#2@noerror\endcsname{#1}%
+  \ea\def\csname @#2\endcsname{\textbackslash #2}
+}
+\fi
+\settable{title}
+\let\@tmp@title\title
+\gdef\title#1{    \@tmp@title{#1}
+    \gdef\thetitle{#1}
+}
+\settable{author}
+\let\@tmp@author\author
+\gdef\author#1{    \@tmp@author{#1}
+    \gdef\theauthor{#1}
+}
+\settable{logo}
+\settable{coursename}
+\settable{coursetitle}
+\settable{institute}
+\settable[\@tr{containspages}]{containspages}
+\settable[\@tr{pagetext}]{pagetext}
+\let\old@maketitle = \maketitle
+\gdef\@maketitle{\handin@opt@titlestyle}
+\gdef\handin@title@wholepage{%
+	\thispagestyle{empty}
+	\begin{center}
+		\ifshowoff
+			\Huge{\textbackslash logo}\\
+			\Large{\@title} \\[1.5cm]
+		\else
+		\ifset@logo{			\includegraphics[width=\handin@opt@logowidth\textwidth]{\@logo}\\[0.5cm]
+			\Large{\@title} \\[1.5cm]
+}{			\ea\@latex@warning{Use \noexpand\logo{path/to/image} to set a logo on the front page}
+			\Huge{\@title} \\[1.0cm]
+}
+		\fi
+	\end{center}
+	\begin{center}
+		\textbf{\@coursename~--~\@coursetitle}\\[1cm]
+		\textbf{\@author} \\[1cm]
+		\textbf{\today} \\[3cm]
+	\end{center}
+	\begin{center}
+		\vfill
+		\@containspages\\[0.5cm]
+		\textsc{\@institute}
+	\end{center}
+	\clearpage
+}
+\gdef\handin@title@small{%
+	\begin{center}
+		\ifshowoff
+			\Huge{\textbackslash logo}\\[0.5cm]
+		\else
+		\ifset@logo{			\includegraphics[width=\handin@opt@logowidth\textwidth]{\@logo} \\[0.5cm]
+}{			\ea\@latex@warning{Use \noexpand\logo{path/to/image} to set a logo on the front page}
+}
+		\fi
+		{\huge{\textbf{\@coursename~--~\@coursetitle \\[0.3cm] \@title}}}\\[0.3cm]
+		{\large \@author}
+	\end{center}
+}
+\geometry{paper=a4paper, bottom=3cm, top=3cm, footnotesep=3cm}
+\pagestyle{fancy}
+\setlength\parindent{0pt}
+\addtolength\headwidth{\extramargins}
+\fancyheadoffset{\dimexpr\extramargins/2\relax}
+    \renewcommand{\headrulewidth}{.3pt} %
+    \lhead{\@coursename~--~\thetitle}
+    \cfoot{}
+    \rhead{\today}
+    \renewcommand{\footrulewidth}{.3pt} %
+    \lfoot{\theauthor}
+    \cfoot{}
+    \rfoot{\@pagetext}
