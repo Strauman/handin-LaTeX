@@ -18,7 +18,7 @@ function make_example_and_layout(){
     cp "bin/layout.pdf" $CTANDir
 
     rm layout.tex
-    
+
     if [ $clean = true ];then
       echo "Cleaning up example"
       rm -rf "./bin"
@@ -43,7 +43,8 @@ function finalize_paths(){
   cd "$mainDir"
   rm -rf "$mainDir/$CTANDirBase"
   mv "$CTANDir" "$mainDir"
-  outHandle "Error in zipping $packagename.zip" zip "$packagename.zip" -r "$mainDir/$CTANDirBase"
+  rm "$packagename.zip"
+  outHandle "Error in zipping $packagename.zip" zip "$packagename.zip" -r "./$CTANDirBase"
   if [ -d "release" ]; then
     rm -rf "release"
   fi
@@ -51,6 +52,7 @@ function finalize_paths(){
 }
 
 cd $sourceDir
+rm -rf "$mainDir/$packagename/"
 make_example_and_layout
 readme_tree
 make_github_readme
