@@ -4,7 +4,7 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
 
 ## Table of contents
 * Resources:
-  * [Latest version (v0.1.0)(.zip)](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
+  * [Latest version (vx.x.x-edge)(.zip)](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/handin.zip)
   * [Package documentation (.pdf)](http://mirrors.ctan.org/macros/latex/contrib/handin/handin-doc.pdf)
   * Layout of front page: [layout.pdf](https://raw.githubusercontent.com/Strauman/Handin-LaTeX-template/master/layout.pdf?raw=true)
   * [How to document this package (.tex)](https://github.com/Strauman/Handin-LaTeX-template/blob/master/documentation-doc.tex)
@@ -24,7 +24,7 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
     * [Translations](https://github.com/Strauman/Handin-LaTeX-template/blob/master/.github/CONTRIBUTING.md#translations--languages)
 
 ## Versions
-The current latest version available on GitHub is v0.1.0 (2018/04/13) build 48
+The current latest version available on GitHub is vx.x.x-edge (2018/04/13) build 50
 
 The current latest version available on CTAN is v0.1.0 (2018/04/12) build 47
 

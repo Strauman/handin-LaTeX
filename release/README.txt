@@ -19,7 +19,7 @@ https://github.com/Strauman/handin-LaTeX
 
 Licence:
 
-The LaTeX package handin - version v0.1.0 (2018/04/13) build 48
+The LaTeX package handin - version vx.x.x-edge (2018/04/13) build 50
 handin.sty
 -------------------------------------------------------------------------------------------
 Copyright (c) 2018 by Andreas Storvik Strauman
