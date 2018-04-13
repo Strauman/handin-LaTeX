@@ -5,6 +5,7 @@ bin/
 *.fls
 tmpOut
 packaging
+!src/packaging
 handinCTAN.zip
 handin/
 docs/handin.tex
