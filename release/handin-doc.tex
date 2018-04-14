@@ -1,5 +1,5 @@
-%% handin v>0.1.2-edgeb50 - 2018/04/13
-%% The LaTeX package handin - version v>0.1.2-edge (2018/04/13) build 50
+%% handin v0.1.2b50 - 2018/04/14
+%% The LaTeX package handin - version v0.1.2 (2018/04/14) build 50
 %% Manual/Documentation for handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -18,6 +18,7 @@
 \usepackage{needspace}
 \usepackage{tabularx}
 \makeatletter
+\def\input@path{{../../docs/}}
 \lstdefinestyle{mydocumentation}{style=tcbdocumentation,
   classoffset=0,
   texcsstyle=*\color{blue},
@@ -41,13 +42,22 @@
       \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
       },
     drop fuzzy shadow,#1}
-  \makeatother
+  \def\l@macro#1#2{#1\hfill\newline}
+\newcommand\macrotable{\hypersetup{linkcolor=black}\@starttoc{mac}\hypersetup{linkcolor=Definition}}
+\let\oldTOC\tableofcontents
+\renewcommand\tableofcontents{\hypersetup{linkcolor=black}\oldTOC\hypersetup{linkcolor=Definition}}
+\reversemarginpar
+\def\updated#1{\tcbdocmarginnote{\bfseries{\color{blue}U}#1}}
+\def\defnew#1{\tcbdocmarginnote{\bfseries{\color{green}N}#1}}
+\makeatother
 \let\dac\docAuxCommand
 \long\def\keyDef#1#2#3#4{\begin{docKey}{#1}{=\meta{#2}}{\meta{default}=#3}#4\end{docKey}}
 \tcbset{documentation listing style=mydocumentation}
 % Magenta HREF style
 \let\oldhref\href
 \gdef\href#1#2{{\color{magenta}\oldhref{#1}{#2}}}
+\tcbset{documentation listing style=mydocumentation,/tcb/color hyperlink=Definition}
+\hypersetup{colorlinks=true}
 % Give section some space
 \let\oldsection\section
 \gdef\section{\needspace{0.3\paperheight}\oldsection}
@@ -56,7 +66,7 @@
 
 
 \setlength{\parindent}{0pt}
-\title{{handin - manual\\ v>0.1.2-edge{\\[-0.5em]\footnotesize(build 50)}}}
+\title{{handin - manual\\ v0.1.2{\\[-0.5em]\footnotesize(build 50)}}}
 \author{Andreas Strauman}
 \begin{document}
 \maketitle
@@ -72,9 +82,10 @@ If you found any bugs or want new functionality, to contribute, view the comment
 \tableofcontents
 \clearpage
  \section{Reference}
-\subsection{Making exercises}
+\clearpage\subsection{Making exercises}
 Here are commands related to creating exercises
-\begin{docCommand}{problem}{\marg{text}}
+\begin{docCommand}{problem}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{problem}}
+\updated{v0.0.2\\2018/04/01 }
  This command will print out a problem header. For example \dac{problem}\{1\}
  prints a nice big header \textbf{Problem 1} You can do a star (*) after \dac{problem} to
  prevent it from showing in the table of contents
@@ -82,7 +93,8 @@ Here are commands related to creating exercises
 \begin{docCommand}{problem*}{\marg{text}}
  Does the same as \dac{problem}, but does not add the problem to the table of contents
 \end{docCommand}
-\begin{docCommand}{pproblem}{\marg{text}}
+\begin{docCommand}{pproblem}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{pproblem}}
+\defnew{v0.0.2\\2018/04/01 }
  This command will print out a part problem header based on what problem you are on.
  For example if you already have done \dac{problem}\{1\}, then \dac{pproblem}\{a\}
  prints a nice big header \textbf{(1a)}. Note that the default behaviour is such that if you are on a
@@ -92,10 +104,11 @@ Here are commands related to creating exercises
 \begin{docCommand}{pproblem*}{\marg{text}}
  Does the same as \dac{pproblem}, but does not add the part problem to the table of contents
 \end{docCommand}
-\subsection{Package options (\dac{handinsetup})}
+\clearpage\subsection{Package options (\dac{handinsetup})}
  You can do configurations on this package, and probably
  even more to come in later versions!
-\begin{docCommand}{handinsetup}{\marg{[key/values]}}
+\begin{docCommand}{handinsetup}{\marg{[key/values]}}\addcontentsline{toc}{subsubsection}{\refCom{handinsetup}}
+
  Here is a list of the different keys and their meaning
 \end{docCommand}
 \keyDef{problem header}{macro}{\dac{@tr}\{Problem\}~\dac{currentProblem}}{
@@ -124,7 +137,7 @@ If "wholepage", \dac{maketitle} will produce a full front-page. If "small", \dac
 \begin{dispListing}
  \handinsetup{part problem header=\currentPartProblem}
 \end{dispListing}
-\subsection{Page formatting commands}
+\clearpage\subsection{Page formatting commands}
 This package redefines \dac{maketitle}.
 Here are some front-page commands. See layout.pdf for where they will appear.
 These commands all have to be executed in the preamble (that is after \dac{documentclass} and before \dac{begin}\{document\})\\
@@ -134,26 +147,32 @@ but are made lasting (not cleared by \dac{maketitle}) with \dac{thetitle} and \d
 \end{docCommand}
 \begin{docCommand}{author}{\marg{your name}}
 \end{docCommand}
-\begin{docCommand}{logo}{\marg{path/to/image}}
+\begin{docCommand}{logo}{\marg{path/to/image}}\addcontentsline{toc}{subsubsection}{\refCom{logo}}
+
  If you want an image below the title, you provide the path to the image here
 \end{docCommand}
-\begin{docCommand}{coursename}{\marg{text}}
+\begin{docCommand}{coursename}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{coursename}}
+
 \end{docCommand}
-\begin{docCommand}{coursetitle}{\marg{text}}
+\begin{docCommand}{coursetitle}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{coursetitle}}
+
 The front page will show coursename - coursetitle on a "subtitle" format
 \end{docCommand}
-\begin{docCommand}{institute}{\marg{text}}
+\begin{docCommand}{institute}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{institute}}
+
  Shows as text on bottom
 \end{docCommand}
-\begin{docCommand}{containspages}{\marg{text}}
+\begin{docCommand}{containspages}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{containspages}}
+
  Here you can set a string that shows on bottom. Default is\\
  \dac{containspages}\{Contains \dac{pageref}\brackets{LastPage\} pages, front page included}
 \end{docCommand}
-\begin{docCommand}{pagetext}{\marg{string}}
+\begin{docCommand}{pagetext}{\marg{string}}\addcontentsline{toc}{subsubsection}{\refCom{pagetext}}
+
  This is the text that is on the bottom right corner reading "Page x of y". Default is
  \dac{pagetext}\{Page \dac{thepage}~of \dac{pageref}{LastPage\}}
 \end{docCommand}
-\subsection{Languages}
+\clearpage\subsection{Languages}
 This package supports.
 \begin{itemize}
 \item English
@@ -167,8 +186,9 @@ The current language is set by the \texttt{iflang} package, so you can use e.g. 
 \begin{dispListing}
 \usepackage[german]{babel}
 \end{dispListing}
-\subsection{General reference}
-\begin{docCommand}{currentProblem}{}
+\clearpage\subsection{General reference}
+\begin{docCommand}{currentProblem}{}\addcontentsline{toc}{subsubsection}{\refCom{currentProblem}}
+
 Contains the argument of the last call to \dac{problem}
 \begin{dispListing}
 \pproblem{hello}
@@ -176,10 +196,12 @@ Contains the argument of the last call to \dac{problem}
 \currentPartProblem %<- contains world
 \end{dispListing}
 \end{docCommand}
-\begin{docCommand}{currentPartProblem}{}
+\begin{docCommand}{currentPartProblem}{}\addcontentsline{toc}{subsubsection}{\refCom{currentPartProblem}}
+
  Just as \refCom{currentProblem}, but contains the argument of the last call to \dac{pproblem}
 \end{docCommand}
-\begin{docCommand}{currentProblemIfNewPage}{}
+\begin{docCommand}{currentProblemIfNewPage}{}\addcontentsline{toc}{subsubsection}{\refCom{currentProblemIfNewPage}}
+
 If the problem is not defined on the current page, then
 The first time \dac{currentProblemIfNewPage} is called on a page,
 it expands to the current problem number. If not, it expands to empty.
@@ -216,6 +238,28 @@ If the problem is defined on the current page, it also expands to empty.
  \ifset@hello{true}{false}
 \end{dispListing}
 \end{docCommand}
+\clearpage\subsection{Macro index reference}
+
+ \addcontentsline{mac}{macro}{\refCom{author}}{}
+\addcontentsline{mac}{macro}{\refCom{containspages}}{}
+\addcontentsline{mac}{macro}{\refCom{coursename}}{}
+\addcontentsline{mac}{macro}{\refCom{coursetitle}}{}
+\addcontentsline{mac}{macro}{\refCom{currentPartProblem}}{}
+\addcontentsline{mac}{macro}{\refCom{currentProblem}}{}
+\addcontentsline{mac}{macro}{\refCom{currentProblemIfNewPage}}{}
+\addcontentsline{mac}{macro}{\refCom{handinsetup}}{}
+\addcontentsline{mac}{macro}{\refCom{institute}}{}
+\addcontentsline{mac}{macro}{\refCom{logo}}{}
+\addcontentsline{mac}{macro}{\refCom{pagetext}}{}
+\addcontentsline{mac}{macro}{\refCom{pproblem}}{}
+\addcontentsline{mac}{macro}{\refCom{pproblem*}}{}
+\addcontentsline{mac}{macro}{\refCom{problem}}{}
+\addcontentsline{mac}{macro}{\refCom{problem*}}{}
+\addcontentsline{mac}{macro}{\refCom{settable}}{}
+\addcontentsline{mac}{macro}{\refCom{title}}{}
+
+ \macrotable
+
 
 \section{Changelog}
 % Use , 2018/04/01
@@ -240,6 +284,6 @@ If the problem is defined on the current page, it also expands to empty.
     \item New part problem counting features
     \item Misc fixes of margin bugs
     \item Better file structuring on page style by \href{https://github.com/MadsAdrian/}{MadsAdrian}
-  \end{itemize}\\
+  \end{itemize}
 \end{tabularx}
  \end{document}

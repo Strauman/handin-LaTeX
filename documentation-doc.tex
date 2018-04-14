@@ -52,6 +52,13 @@ The second way is to wait until the entire script has finished and then
 print the variables:
 %:$$MYVAR
 
+There is a couple of special variables:
+%:$$macrodefs
+gives a list of all defined macros. Using
+%:?TOC
+prevents the next macro definition from showing up in this list
+% whilst :!TOC prevents it from showing in the _actual_ TOC
+
 Macro escaping:
 Most macros will be escaped automatically with \dac. That is:
 

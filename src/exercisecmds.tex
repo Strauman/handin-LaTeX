@@ -77,6 +77,7 @@
 %: prints a nice big header \!textbf{Problem 1} You can do a star (*) after \problem to
 %: prevent it from showing in the table of contents
 %:-
+%:!TOC
 %:=\problem*{text}
 %: Does the same as \problem, but does not add the problem to the table of contents
 %:-
@@ -106,6 +107,8 @@
 %: new page, then the part problems are shown with the exercise number in front of it. If not
 %: it is omitted. If you want to change this behaviour, see \keyRef{part problem header}
 %:-
+%% The %:!TOC prevents the macro from showing up in the table of contents
+%:!TOC
 %:=\pproblem*{text}
 %: Does the same as \pproblem, but does not add the part problem to the table of contents
 %:-
