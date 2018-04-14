@@ -1,5 +1,6 @@
 !problem
 !problem*
+!pproblem
 !pproblem*
 !handinsetup
 !title
@@ -14,8 +15,5 @@
 !currentPartProblem
 !currentProblemIfNewPage
 !settable
-:v0.0.2:2018/04/01
-\problem
-\pproblem
 :@@VERSION:@@DATE
-\tst
+\MACROUPDATEDTHISVERSION
