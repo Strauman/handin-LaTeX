@@ -36,7 +36,7 @@ my $contentsline = "\\!addcontentsline{toc}{subsubsection}{§CONTENT}\n";
 my $macroContentLine = $contentsline =~ s/§CONTENT/\\!refCom{§VAR}/r;
 my $macroContentInLine = "\\!addcontentsline{mac}{macro}{\\!refCom{§VAR}}{}\n";
 my $envContentLine="\\!addcontentsline{toc}{subsubsection}{\\!refEnv{§VAR}}\n";
-my $sectionHeader = "\\clearpage\\subsection{§section}\n";
+my $sectionHeader = "\\filbreak\\subsection{§section}\n";
 
 # Default section if nothing set
 my $currentSection="References";
@@ -116,7 +116,7 @@ my $pOarg=qr/(?:\[(?<oarg>.*?)\])?/;
 my $pMargs=qr/(?=(?<margs>(?:{[^}]*})*))?/;
 my $pStyleArgs=qr/(?:\[(?<styleArgs>.*?)\])?/;
 my $descCapture=qr/${pPrefix}([^!=§\$].*)/;
-my $pSkipTOC=qr/${pPrefix}?TOC/;
+my $pSkipTOC=qr/${pPrefix}\?TOC/;
 my $pInlineTOC=qr/${pPrefix}\!TOC/;
 
 # Macros

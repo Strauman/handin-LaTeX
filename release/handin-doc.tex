@@ -1,5 +1,5 @@
-%% handin v>0.1.2-edgeb50 - 2018/04/14
-%% The LaTeX package handin - version v>0.1.2-edge (2018/04/14) build 50
+%% handin v0.1.2b50 - 2018/04/21
+%% The LaTeX package handin - version v0.1.2 (2018/04/21) build 50
 %% Manual/Documentation for handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -13,10 +13,11 @@
 %% version 2008/05/04 or later.
 %% This work has the LPPL maintenance status `author-maintained'.
 %% This work consists of all files listed in README.txt
-\documentclass{article}
+\documentclass[a4paper]{article}
 \usepackage[all]{tcolorbox}
 \usepackage{needspace}
 \usepackage{tabularx}
+\usepackage{geometry}
 \makeatletter
 \def\input@path{{../../docs/}}
 \lstdefinestyle{mydocumentation}{style=tcbdocumentation,
@@ -44,14 +45,50 @@
     drop fuzzy shadow,#1}
   \def\l@macro#1#2{#1\hfill\newline}
 \newcommand\macrotable{\hypersetup{linkcolor=black}\@starttoc{mac}\hypersetup{linkcolor=Definition}}
+% --- CHANGELOG TABLE --- %
+\newcommand*\l@version[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{}\par
+    \endgroup
+  \fi}
+  \newcommand*\contentschange[2]{
+    \addvspace{0.5em \@plus\p@}%
+    \begin{minipage}{.59\textwidth}%
+    \advance\leftskip1.5em--#1%
+    \end{minipage}\hfill%
+    \begin{minipage}{.35\textwidth}%
+    #2%
+    \end{minipage}\par
+  }
+
+\newcommand\chlogtable{\begin{NoHyper}\@starttoc{chlog}\hypersetup{final}\end{NoHyper}}
+\def\newversion#1{\addcontentsline{chlog}{version}{#1}}
+\newcommand\change[2][]{\addtocontents{chlog}{\protect\contentschange{#2}{#1}}}
+%% Changelog github credit
+\def\gh#1{\nobreak{by\nobreak\ \nobreak\href{https://github.com/#1}{#1}}\newline{\nobreak\url{https://github.com/#1}}}
+\newlength{\lrmargin}
+\setlength{\lrmargin}{0.5cm}
+% --- /CHANGELOG TABLE --- %
+
 \let\oldTOC\tableofcontents
 \renewcommand\tableofcontents{\hypersetup{linkcolor=black}\oldTOC\hypersetup{linkcolor=Definition}}
 \reversemarginpar
 \def\updated#1{\tcbdocmarginnote{\bfseries{\color{blue}U}#1}}
 \def\defnew#1{\tcbdocmarginnote{\bfseries{\color{green}N}#1}}
+
 \makeatother
 \let\dac\docAuxCommand
 \long\def\keyDef#1#2#3#4{\begin{docKey}{#1}{=\meta{#2}}{\meta{default}=#3}#4\end{docKey}}
+\long\def\optDef#1#2{\begin{docKey*}{#1}{}{}#2\end{docKey*}}
 \tcbset{documentation listing style=mydocumentation}
 % Magenta HREF style
 \let\oldhref\href
@@ -66,7 +103,7 @@
 
 
 \setlength{\parindent}{0pt}
-\title{{handin - manual\\ v>0.1.2-edge{\\[-0.5em]\footnotesize(build 50)}}}
+\title{{handin - manual\\ v0.1.2{\\[-0.5em]\footnotesize(build 50)}}}
 \author{Andreas Strauman}
 \begin{document}
 \maketitle
@@ -82,7 +119,7 @@ If you found any bugs or want new functionality, to contribute, view the comment
 \tableofcontents
 \clearpage
  \section{Reference}
-\clearpage\subsection{Making exercises}
+\filbreak\subsection{Making exercises}
 Here are commands related to creating exercises
 \begin{docCommand}{problem}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{problem}}
 
@@ -104,7 +141,7 @@ Here are commands related to creating exercises
 \begin{docCommand}{pproblem*}{\marg{text}}
  Does the same as \dac{pproblem}, but does not add the part problem to the table of contents
 \end{docCommand}
-\clearpage\subsection{Package options (\dac{handinsetup})}
+\filbreak\subsection{Package options (\dac{handinsetup})}
  You can do configurations on this package, and probably
  even more to come in later versions!
 \begin{docCommand}{handinsetup}{\marg{[key/values]}}\addcontentsline{toc}{subsubsection}{\refCom{handinsetup}}
@@ -137,7 +174,7 @@ If "wholepage", \dac{maketitle} will produce a full front-page. If "small", \dac
 \begin{dispListing}
  \handinsetup{part problem header=\currentPartProblem}
 \end{dispListing}
-\clearpage\subsection{Page formatting commands}
+\filbreak\subsection{Page formatting commands}
 This package redefines \dac{maketitle}.
 Here are some front-page commands. See layout.pdf for where they will appear.
 These commands all have to be executed in the preamble (that is after \dac{documentclass} and before \dac{begin}\{document\})\\
@@ -172,7 +209,7 @@ The front page will show coursename - coursetitle on a "subtitle" format
  This is the text that is on the bottom right corner reading "Page x of y". Default is
  \dac{pagetext}\{Page \dac{thepage}~of \dac{pageref}{LastPage\}}
 \end{docCommand}
-\clearpage\subsection{Languages}
+\filbreak\subsection{Languages}
 This package supports.
 \begin{itemize}
 \item English
@@ -186,7 +223,7 @@ The current language is set by the \texttt{iflang} package, so you can use e.g. 
 \begin{dispListing}
 \usepackage[german]{babel}
 \end{dispListing}
-\clearpage\subsection{General reference}
+\filbreak\subsection{General reference}
 \begin{docCommand}{currentProblem}{}\addcontentsline{toc}{subsubsection}{\refCom{currentProblem}}
 
 Contains the argument of the last call to \dac{problem}
@@ -238,7 +275,7 @@ If the problem is defined on the current page, it also expands to empty.
  \ifset@hello{true}{false}
 \end{dispListing}
 \end{docCommand}
-\clearpage\subsection{Macro index reference}
+\filbreak\subsection{Macro index reference}
 
  \addcontentsline{mac}{macro}{\refCom{author}}{}
 \addcontentsline{mac}{macro}{\refCom{containspages}}{}
@@ -261,29 +298,28 @@ If the problem is defined on the current page, it also expands to empty.
  \macrotable
 
 
+\newgeometry{lmargin=\the\dimexpr0.2in+0.5cm\relax,rmargin=0.5cm}
 \section{Changelog}
 % Use , 2018/04/01
-\begin{tabularx}{\textwidth}{llX}
-  Version&Date&Changes\\
-  v0.0.2&2018/04/01&Problems are now added to the table of contents by default\\
-  v0.0.2b34&2018/04/02&Updated documentation syntax\\
-  v0.0.3b41&2018/04/04&\begin{itemize}
-    \item German language added by africola \newline (\url{https://github.com/africola})
-  \end{itemize}\\
-  v0.0.4&2018/04/06&\begin{itemize}
-    \item Made proper margins for problem headers and part problem headers
-    \item Added \texttt{microtype} and Latin Modern font (\texttt{cfr-lm})\newline
-    Contributed by:\newline
-    \href{https://github.com/koppor}{koppor} (\url{https://github.com/koppor})
-  \end{itemize}\\
-  v0.1.0&2018/04/10&\begin{itemize}
-    \item Introduced package options
-    \item New slick, minimalistic, front page by \href{https://github.com/DanielTrosten/}{DanielTrosten}
-    \item Added support for \dac{thetitle} and \dac{theauthor} by \href{https://github.com/MadsAdrian/}{MadsAdrian}
-    \item Footer bar by default by \href{https://github.com/MadsAdrian/}{MadsAdrian}
-    \item New part problem counting features
-    \item Misc fixes of margin bugs
-    \item Better file structuring on page style by \href{https://github.com/MadsAdrian/}{MadsAdrian}
-  \end{itemize}
-\end{tabularx}
+\newversion{v0.0.2 2018/04/01}
+  \change{Problems are now added to the table of contents by default}
+\newversion{v0.0.2b34 2018/04/02}
+  \change{Updated documentation syntax}
+\newversion{v0.0.3b41 2018/04/04}
+    \change[\gh{africola}]{ German language translation}
+
+\newversion{v0.0.4 2018/04/06}
+    \change{ Made proper margins for problem headers and part problem headers}
+    \change[\gh{koppor}]{ Added \texttt{microtype} and Latin Modern font (\texttt{cfr-lm})}
+
+
+\newversion{v0.1.0 2018/04/10}
+    \change{ Introduced package options}
+    \change[\gh{DanielTrosten}]{ New slick, minimalistic, front page}
+    \change[\gh{MadsAdrian}]{ Added support for \dac{thetitle} and \dac{theauthor}}
+    \change[\gh{MadsAdrian}]{ Footer bar by default}
+    \change{ New part problem counting features}
+    \change{ Misc fixes of margin bugs}
+    \change[\gh{MadsAdrian}]{ Better file structuring on page style}
+\chlogtable
  \end{document}
