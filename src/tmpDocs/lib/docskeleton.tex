@@ -13,24 +13,57 @@
 %% version 2008/05/04 or later.
 %% This work has the LPPL maintenance status `author-maintained'.
 %% This work consists of all files listed in README.txt
-\documentclass{article}
+\documentclass[a4paper]{article}
 \usepackage[all]{tcolorbox}
 \usepackage{needspace}
 \usepackage{tabularx}
+\usepackage{geometry}
 \makeatletter
 \def\input@path{{../../docs/}}
 \input{styling}
 \input{preamble}
 \def\l@macro#1#2{#1\hfill\newline}
 \newcommand\macrotable{\hypersetup{linkcolor=black}\@starttoc{mac}\hypersetup{linkcolor=Definition}}
+\newcommand\gh[1]{\href{#1}{https://github.com/#1}}
+% --- CHANGELOG TABLE --- %
+\newcommand*\l@version[2]{%
+  \ifnum \c@tocdepth >\z@
+    \addpenalty\@secpenalty
+    \addvspace{1.0em \@plus\p@}%
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{}\par
+    \endgroup
+  \fi}
+  \newcommand*\l@change[2]{%
+    \addvspace{0.5em \@plus\p@}%
+    \leftskip1em--\hspace{0.5em}\begin{minipage}{0.5\textwidth}#1\end{minipage}\hfill%
+    \begin{minipage}{0.3\textwidth}#2\end{minipage}\par%
+  }
+
+\newcommand\chlogtable{\begin{NoHyper}\@starttoc{chlog}\hypersetup{final}\end{NoHyper}}
+\def\newversion#1{\addcontentsline{chlog}{version}{#1}}
+\newcommand\change[2][]{\addtocontents{chlog}{\protect\contentsline{change}{#2}{#1}{section.\thepage}}}
+% --- /CHANGELOG TABLE --- %
+
 \let\oldTOC\tableofcontents
 \renewcommand\tableofcontents{\hypersetup{linkcolor=black}\oldTOC\hypersetup{linkcolor=Definition}}
 \reversemarginpar
 \def\updated#1{\tcbdocmarginnote{\bfseries{\color{blue}U}#1}}
 \def\defnew#1{\tcbdocmarginnote{\bfseries{\color{green}N}#1}}
-\makeatother
+
 \let\dac\docAuxCommand
+\def\mdac#1{\docAuxCommand{\expandafter\@gobble\string#1}}
+
+\makeatother
+
 \long\def\keyDef#1#2#3#4{\begin{docKey}{#1}{=\meta{#2}}{\meta{default}=#3}#4\end{docKey}}
+\long\def\optDef#1#2{\begin{docKey*}{#1}{}{}#2\end{docKey*}}
 \tcbset{documentation listing style=mydocumentation}
 % Magenta HREF style
 \let\oldhref\href
@@ -58,6 +91,7 @@ If you found any bugs or want new functionality, to contribute, view the comment
 \input{intro}
 \section{Reference}
 §content
+% \newgeometry{lmargin=0.7cm}
 \section{Changelog}
 \input{changelog}
 \end{document}
