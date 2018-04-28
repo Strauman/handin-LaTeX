@@ -113,12 +113,14 @@ my $descPrefix=qr/${pPrefix}[^!=§\$]/;
 ## Patterns
 my $flushoutPattern=qr/${pPrefix}-/;
 my $pOarg=qr/(?:\[(?<oarg>.*?)\])?/;
-my $pMargs=qr/(?=(?<margs>(?:{[^}]*})*))?/;
+my $pMargs=qr/(?<margs>(\{((?:(?:(?>[^{}]+)|(?-2)))+)\})*)/;
+# my $pMargs=qr/(?=(?<margs>(?:{[^}]*})*))?/;
 my $pStyleArgs=qr/(?:\[(?<styleArgs>.*?)\])?/;
 my $descCapture=qr/${pPrefix}([^!=§\$].*)/;
 my $pSkipTOC=qr/${pPrefix}\?TOC/;
 my $pInlineTOC=qr/${pPrefix}\!TOC/;
-
+my $piTOCOn=qr/${pPrefix}\!iTOCOn/;
+my $piTOCOff=qr/${pPrefix}\!iTOCOff/;
 # Macros
 my $pMacro=qr/\\(?!EDOC|begin)(?<macroname>[a-zA-Z@]+(?:\*)?)/;
 my $macroDefPattern=qr/^${defPrefix}${pMacro}${pOarg}${pMargs}${pStyleArgs}/;
@@ -127,8 +129,8 @@ my $macroDefPattern=qr/^${defPrefix}${pMacro}${pOarg}${pMargs}${pStyleArgs}/;
 my $pEnv=qr/\\\\begin\{(?<envname>[^\}]+)\}/;
 my $envDefPattern=qr/^${defPrefix}${$pEnv}${pOarg}${pMargs}${pStyleArgs}/;
 # Replacing macros with \dac
-my $dacSearch=qr/\\((?!(?:dac|oarg|marg|meta|refCom|brackets|refEnv|\\|keyDef|refKey))[a-zA-Z@]+)/;
-my $bracketSearch=qr/\\(?!(?:dac|oarg|marg|meta|refCom|brackets|refEnv|keyDef|refKey))[a-zA-Z@]+\K\{([^\}]+)\}/;
+my $dacSearch=qr/\\((?!(?:dac|oarg|marg|meta|refCom|brackets|refEnv|\\|keyDef|optDef|refKey|texttt|emph))[a-zA-Z@]+)/;
+my $bracketSearch=qr/\\(?!(?:dac|oarg|marg|meta|refCom|brackets|refEnv|keyDef|optDef|refKey|texttt|emph))[a-zA-Z@]+\K\{([^\}]+)\}/;
 # Store all defined macros
 my @macroDefinitions;
 my @envDefinitions;
@@ -156,6 +158,7 @@ my %states = (
 );
 my $skipNextTOC=0;
 my $inlineNextTOC=1;
+my $inlineTOCEnabled=1;
 my %sections = ();
 my %variables= ();
 # subs:
@@ -246,7 +249,8 @@ sub definitions
     my $oargs = $+{oarg};
     my $macroname = $+{macroname};
     my $styleArgs = $+{styleArgs};
-    $margs =~ s/(\{[^\}]*\})/\\marg$1/g;
+    $margs =~ s/(\{((?:(?:(?>[^{}]+)|(?-2)))+)\})/\\marg$1/g;
+    talk "$margs\n";
     if($oargs){
       $oargs = "\\oarg{$oargs}";
     }
@@ -257,7 +261,7 @@ sub definitions
     $output =~ s/§oargs/$oargs/;
     $output =~ s/§mname/$macroname/;
     if($skipNextTOC==0){
-      if ($inlineNextTOC){
+      if ($inlineNextTOC && $inlineTOCEnabled){
           my $TOCLine = $macroContentLine =~ s/§VAR/$macroname/r;
           $TOCLine =~ s/\\!/\\/g;
           $output .= $TOCLine
@@ -280,7 +284,8 @@ sub definitions
       my $oargs = $+{oarg};
       my $envname = $+{envname};
       my $styleArgs = $+{styleArgs};
-      $margs =~ s/(\{[^\}]*\})/\\marg$1/g;
+      # $margs =~ s/(\{[^\}]*\})/\\marg$1/g;
+      $margs =~ s/(\{((?:(?:(?>[^{}]+)|(?-2)))+)\})/\\marg$1/g;
       if($oargs){
         $oargs = "\\oarg{$oargs}";
       }
@@ -362,7 +367,15 @@ while ($line=<$FILE>){
   if (/^${variablePrefix}/){
     variableHandler();
   }
-  if(/$pInlineTOC/){
+  if (/$piTOCOn/){
+    $inlineTOCEnabled=1;
+    next;
+  }
+  elsif (/$piTOCOff/){
+    $inlineTOCEnabled=0;
+    next;
+  }
+  elsif(/$pInlineTOC/){
     # Should not write next TOC inline
     $inlineNextTOC=0;
     next;
