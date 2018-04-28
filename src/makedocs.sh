@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Combining files"
-latexpand --keep-comments texpack.tex > tmpDocs/expanded.tex 2>./expand.log
+latexpand --keep-comments handinpack.tex > tmpDocs/expanded.tex 2>./expand.log
 if [ ! "$?" -eq "0" ];then
   echo "Something went wrong when combining files $exitCode"
   cat ./expand.log
