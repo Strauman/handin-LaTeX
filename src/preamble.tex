@@ -19,6 +19,7 @@
 %:The \title and \author commands are as per usual,
 %:but are made lasting (not cleared by \maketitle) with \thetitle and \theauthor for use in headers and footers
 %:-
+%:!TOC
 %:=\title{title}
 \settable{title}
 %% Define \thetitle as a lasting alias for \@title
@@ -27,6 +28,7 @@
     \@tmp@title{#1}
     \gdef\thetitle{#1}
 }
+%:!TOC
 %:=\author{your name}
 \settable{author}
 %% Define \theauthor as a lasting alias for \@author
