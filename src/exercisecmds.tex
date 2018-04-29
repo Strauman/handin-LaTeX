@@ -81,7 +81,7 @@
 %:=\problem*{text}
 %: Does the same as \problem, but does not add the problem to the table of contents
 %:-
-\gdef\problem{\@ifstar{\@problem}{\@problemTOC}}
+\gdef\problem{\par\@ifstar{\@problem}{\@problemTOC}}
 \gdef\@problemTOC#1{%
   \gdef\currentProblem{#1}%
   \addcontentsline{toc}{section}{\handin@opt@problemheaderTOC}%
@@ -112,7 +112,7 @@
 %:=\pproblem*{text}
 %: Does the same as \pproblem, but does not add the part problem to the table of contents
 %:-
-\gdef\pproblem{\@ifstar{\@pproblem}{\@pproblemTOC}}
+\gdef\pproblem{\par\@ifstar{\@pproblem}{\@pproblemTOC}}
 \gdef\@pproblemTOC#1{%
   \gdef\currentPartProblem{#1}
   \addcontentsline{toc}{subsection}{\handin@opt@partproblemheaderTOC}%
