@@ -9,7 +9,7 @@ function make_example_and_layout(){
   # Creates src/example/ and src/example.zip
   pushd . >/dev/null
   cd $sourceDir
-    add_to_CTANDir example.tex ../img/universityTromsoLogo.pdf layout.tex
+    add_to_CTANDir example.tex layout.tex #../img/universityTromsoLogo.pdf
   cd $CTANDir
     latexBuild "example.tex"
     latexBuild "layout.tex"

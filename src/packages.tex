@@ -1,4 +1,5 @@
 %!TEX root = main.tex
+\makeatletter
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -6,16 +7,18 @@
 \usepackage{scrextend}
 \input{everypage}
 \input{exercisecmds}
+\makeatletter\ifhandin@islight\else
 \usepackage{fancyhdr}
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{bm}
 \usepackage{esint}
+\fi
 \usepackage{iflang}
 \usepackage{etoolbox}
 \usepackage{pgfkeys}
-
+\ifhandin@islight\else
 % Character protrusion and font expansion. See https://www.ctan.org/pkg/microtype.
 \usepackage[
   babel=true, % Enable language-specific kerning. Take language-settings from the language of the current document (see Section 6 of microtype.pdf)
@@ -31,3 +34,4 @@
     tt={oldstyle=false,proportional=true,variable=true},%
     qt=false%
 ]{cfr-lm}
+\fi

@@ -1,4 +1,6 @@
+%!TEX root = main.tex
 %:§ex=Making exercises
+%:§opts=Package options
 %:§config=Package options (\dac{handinsetup})
 %:§fp=Page formatting commands
 %:§lang=Languages
@@ -7,5 +9,7 @@
 %:$$macrodefs
 %:-
 \input{preamble}
+\makeatletter\ifhandin@islight\else
 \input{titlemaker}
 \input{pagestyle}
+\fi

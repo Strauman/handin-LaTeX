@@ -9,8 +9,7 @@ Files included in this package:
 ├── handin-doc.pdf
 ├── handin-doc.tex
 ├── handin.sty
-├── layout.pdf
-└── universityTromsoLogo.pdf
+└── layout.pdf
 
 Author: Storvik Strauman, Andreas
 
@@ -19,7 +18,7 @@ https://github.com/Strauman/handin-LaTeX
 
 Licence:
 
-The LaTeX package handin - version v0.1.1 (2018/04/28) build 52
+The LaTeX package handin - version v0.1.1 (2018/07/22) build 52
 handin.sty
 -------------------------------------------------------------------------------------------
 Copyright (c) 2018 by Andreas Storvik Strauman

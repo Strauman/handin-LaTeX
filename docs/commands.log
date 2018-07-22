@@ -15,5 +15,5 @@
 !currentPartProblem
 !currentProblemIfNewPage
 !settable
-:@@VERSION:@@DATE
-\MACROUPDATEDTHISVERSION
+:v0.1.1:2018/07/22
+\pproblem

@@ -1,5 +1,5 @@
-%% handin v0.1.1 - 2018/04/28
-%% The LaTeX package handin - version v0.1.1 (2018/04/28) build 52
+%% handin v0.1.1 - 2018/07/22
+%% The LaTeX package handin - version v0.1.1 (2018/07/22) build 52
 %% handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -14,10 +14,16 @@
 %% This work has the LPPL maintenance status `author-maintained'.
 %% This work consists of all files listed in README.txt
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{handin}[2018/04/28 v0.1.1 Creates a setup that is ideal for handing in hard-science school papers that are divided in exercises.]
+\ProvidesPackage{handin}[2018/07/22 v0.1.1 Creates a setup that is ideal for handing in hard-science school papers that are divided in exercises.]
 \newlength{\extramargins}
 \setlength{\extramargins}{4em}
 \PackageWarningNoLine{handin-v0.1.1}{This package is in the alpha stage, and if something unexpected happens please, oh pretty please, report it to https://github.com/Strauman/Handin-LaTeX-template. Thank you!}
+\RequirePackage{pgfopts}
+\newif\ifhandin@islight
+\pgfkeys{/handin/.is family, /handin/.cd,
+light/.is if={handin@islight}
+}
+\ProcessPgfOptions{/handin}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -75,7 +81,7 @@
 \gdef\currentProblemIfNewPage{\if\@ProblemOnThisPage\@isFalse%
 \global\let\@ProblemOnThisPage\@isTrue%
 \currentProblem\fi}%
-\gdef\problem{\@ifstar{\@problem}{\@problemTOC}}
+\gdef\problem{\par\@ifstar{\@problem}{\@problemTOC}}
 \gdef\@problemTOC#1{%
   \gdef\currentProblem{#1}%
   \addcontentsline{toc}{section}{\handin@opt@problemheaderTOC}%
@@ -93,7 +99,7 @@
     \hspace*{\fullproblemmargin}{\normalfont\Large\bfseries\handin@opt@problemheader}%
 }\vspace*{1.5\baselineskip}%
 }
-\gdef\pproblem{\@ifstar{\@pproblem}{\@pproblemTOC}}
+\gdef\pproblem{\par\@ifstar{\@pproblem}{\@pproblemTOC}}
 \gdef\@pproblemTOC#1{%
   \gdef\currentPartProblem{#1}
   \addcontentsline{toc}{subsection}{\handin@opt@partproblemheaderTOC}%
@@ -102,15 +108,18 @@
 \def\@pproblem#1{%
 \@atMargin{{\normalfont\Large\bfseries\handin@opt@partproblemheader}}{\fullpartproblemmargin}\ignorespaces%
 }
- \usepackage{fancyhdr}
+ \ifhandin@islight\else
+\usepackage{fancyhdr}
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{bm}
 \usepackage{esint}
+\fi
 \usepackage{iflang}
 \usepackage{etoolbox}
 \usepackage{pgfkeys}
+\ifhandin@islight\else
 \usepackage[
   babel=true, %
   expansion=alltext,
@@ -123,6 +132,7 @@
     tt={oldstyle=false,proportional=true,variable=true},%
     qt=false%
 ]{cfr-lm}
+\fi
 \edef\@isTrue{1}
 \edef\@isFalse{0}
 \pgfkeys{/handinsetup/.is family, /handinsetup,
@@ -227,6 +237,7 @@ switches/.cd,
 \settable{institute}
 \settable[\@tr{containspages}]{containspages}
 \settable[\@tr{pagetext}]{pagetext}
+ \ifhandin@islight\else
 \let\old@maketitle = \maketitle
 \gdef\@maketitle{\handin@opt@titlestyle}
 \gdef\handin@title@wholepage{%
@@ -270,6 +281,7 @@ switches/.cd,
 }
 \geometry{paper=a4paper, bottom=3cm, top=3cm, footnotesep=3cm}
 \pagestyle{fancy}
+\g@addto@macro\maketitle{\thispagestyle{fancy}}
 \setlength\parindent{0pt}
 \addtolength\headwidth{\extramargins}
 \fancyheadoffset{\dimexpr\extramargins/2\relax}
@@ -281,3 +293,4 @@ switches/.cd,
     \lfoot{\theauthor}
     \cfoot{}
     \rfoot{\@pagetext}
+ \fi

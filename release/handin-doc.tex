@@ -1,5 +1,5 @@
-%% handin v0.1.1b52 - 2018/04/28
-%% The LaTeX package handin - version v0.1.1 (2018/04/28) build 52
+%% handin v0.1.1b52 - 2018/07/22
+%% The LaTeX package handin - version v0.1.1 (2018/07/22) build 52
 %% Manual/Documentation for handin.sty
 %% -------------------------------------------------------------------------------------------
 %% Copyright (c) 2018 by Andreas Storvik Strauman
@@ -110,7 +110,7 @@ This is a package that makes it easy for student to hand in a formatted document
 
 If you are a teacher, this package works just as well for creating exercises!\\
  
-If you found any bugs or want new functionality, to contribute, view the commented source, get latest version of this package or get in touch with me, you can do all of that at \url{https://github.com/Strauman/handin-LaTeX}. If you have questions of functionality, kindly direct them to the community\\ \url{http://tex.stackexchange.com}. The author is active on this site regularly.
+If you found any bugs or want new functionality, to contribute, view the commented source, get latest version of this package or get in touch with me, you can do all of that at\\\url{https://github.com/Strauman/handin-LaTeX}. If you have questions of functionality, kindly direct them to the community\\ \url{http://tex.stackexchange.com}. The author is active on this site regularly.
 
 \tableofcontents
 \clearpage
@@ -127,7 +127,7 @@ Here are commands related to creating exercises
  Does the same as \dac{problem}, but does not add the problem to the table of contents
 \end{docCommand}
 \begin{docCommand}{pproblem}{\marg{text}}\addcontentsline{toc}{subsubsection}{\refCom{pproblem}}
-
+\updated{v0.1.1\\2018/07/22 }
  This command will print out a part problem header based on what problem you are on.
  For example if you already have done \dac{problem}\{1\}, then \dac{pproblem}\{a\}
  prints a nice big header \textbf{(1a)}. Note that the default behaviour is such that if you are on a
@@ -137,6 +137,11 @@ Here are commands related to creating exercises
 \begin{docCommand}{pproblem*}{\marg{text}}
  Does the same as \dac{pproblem}, but does not add the part problem to the table of contents
 \end{docCommand}
+\filbreak\subsection{Package options}
+\keyDef{light}{true/false}{false}{
+Pass this option if you don't want to define a different \dac{maketitle} and include
+basic math packages.
+}
 \filbreak\subsection{Package options (\dac{handinsetup})}
  You can do configurations on this package, and probably
  even more to come in later versions!
@@ -302,20 +307,24 @@ If the problem is defined on the current page, it also expands to empty.
 \newversion{v0.0.2b34 2018/04/02}
   \change{Updated documentation syntax}
 \newversion{v0.0.3b41 2018/04/04}
-    \change[\gh{africola}]{ German language translation}
+    \change[\gh{africola}]{German language translation}
 
 \newversion{v0.0.4 2018/04/06}
-    \change{ Made proper margins for problem headers and part problem headers}
-    \change[\gh{koppor}]{ Added \texttt{microtype} and Latin Modern font (\texttt{cfr-lm})}
+    \change{Made proper margins for problem headers and part problem headers}
+    \change[\gh{koppor}]{Added \texttt{microtype} and Latin Modern font (\texttt{cfr-lm})}
 
 
 \newversion{v0.1.0 2018/04/10}
-    \change{ Introduced package options}
-    \change[\gh{DanielTrosten}]{ New slick, minimalistic, front page}
-    \change[\gh{MadsAdrian}]{ Added support for \dac{thetitle} and \dac{theauthor}}
-    \change[\gh{MadsAdrian}]{ Footer bar by default}
-    \change{ New part problem counting features}
-    \change{ Misc fixes of margin bugs}
-    \change[\gh{MadsAdrian}]{ Better file structuring on page style}
+    \change{Introduced package options}
+    \change[\gh{DanielTrosten}]{New slick, minimalistic, front page}
+    \change[\gh{MadsAdrian}]{Added support for \dac{thetitle} and \dac{theauthor}}
+    \change[\gh{MadsAdrian}]{Footer bar by default}
+    \change{New part problem counting features}
+    \change{Misc fixes of margin bugs}
+    \change[\gh{MadsAdrian}]{Better file structuring on page style}
+\newversion{v0.1.1 2018/07/22}
+  \change{Fixed bug where first page after title did not have header and footer.}
+  \change{Makes sure \refCom{pproblem} is in horizontal mode, so that the \dac{pproblem} header is placed correctly.}
+  \change{Added package option \refKey{light}}
 \chlogtable
  \end{document}
