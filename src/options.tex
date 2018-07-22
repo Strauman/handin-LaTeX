@@ -1,0 +1,11 @@
+%!TEX root = main.tex
+%:§opts
+%:\keyDef{light}{true/false}{false}{
+%:Pass this option if you don't want to define a different \maketitle and include
+%:basic math packages.
+%:}
+\newif\ifhandin@islight
+\pgfkeys{/handin/.is family, /handin/.cd,
+light/.is if={handin@islight}
+}
+\ProcessPgfOptions{/handin}
