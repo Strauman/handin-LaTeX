@@ -26,7 +26,7 @@ Here is the [handin-doc.pdf](https://raw.githubusercontent.com/Strauman/Handin-L
 ## Versions
 The current latest version available on GitHub is @@VERSION (@@DATE) build @@BUILD
 
-The current latest version available on CTAN is v0.1.0 (2018/04/12) build 47
+The current latest version available on CTAN is v0.1.1 (2018/04/12) build 52
 
 *Note that it can take at least 24-48 hours from the CTAN date above until the package is updated on CTAN, TeXLive and MiKTeX.*
 
