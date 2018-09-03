@@ -26,6 +26,7 @@
 \makeatletter
 \let\ea = \expandafter
 \newcommand{\settable}[2][\@nil]{
+\ifhandin@islight\else
   %%% example call \settable[\actionIfNotSet]{test}
 
   %% below equiv to
@@ -59,7 +60,7 @@
   \ea\def\csname @#2\endcsname{
     \csname default@#2\endcsname
   }
-}
+\fi}
 
 \ifshowoff
 % \renewcommand{\settable}[2][\@nil]{
